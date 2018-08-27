@@ -23,12 +23,12 @@ class LineServer(object):
         'LINE_TODAY': '1518712866'
     }
 
-    USER_AGENT  = 'Line/7.14.0'
+    USER_AGENT  = 'Line/2.1.5'
     APP_TYPE    = ApplicationType.IOS
-    APP_NAME    = "DESKTOPMAC\t5.5.1\tANBOT\tTools\10.13.2"
-    PHONE_NAME  = 'IOS\t7.14.0\tiPhone OS\t10.12.0'
+    APP_NAME    = "DESKTOPMAC\t2.1.5\tHAI\tPuy\10.13.2"
+    PHONE_NAME  = 'IOS\t8.11.10\tiPhone OS\t10.12.0'
     CARRIER     = '51089, 1-0'
-    SYSTEM_NAME = 'Aditya Nugraha'
+    SYSTEM_NAME = 'PUY'
     IP_ADDR     = '8.8.8.8'
     EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
