@@ -73,9 +73,9 @@ class LineBot(object):
                             ditkey = wait["setkey"]
                             if wait['GN'] != '':wait['GN']='';return
                             if ditsa == "renew" and saya in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:a=subprocess.getoutput('rm -rf tmp;mkdir tmp');self.client.sendMessage(to, " 「 Restarting 」\nType: Restart Program\nRestarting...");self.client.restart_program()
-                            if ditsa.startswith('rname set '):self.client.sendMessage(to,self.client.mykeyset(self.client.adityasplittext(ditsa,'s'),wait))
+                            if ditsa.startswith('rname set '):self.client.sendMessage(to,self.client.mykeyset(self.client.adityasplittext(ditsa,'s'),wait))                            
                             if ditsa == "rname off":self.client.sendMessage(to,self.client.mykeyoff(wait))
-                            if ditsa == 'rname':self.client.sendMessage(to,self.client.mykey(wait))
+                            if ditsa == 'rname':self.client.sendMessage(to,self.client.mykey(wait))  
                             if dits == 'test':print(msg)
                             if dits == 'autoread':self.client.sendMessage(to,self.client.autoread(wait))
                             if dits == "quranlist" or dits.startswith("qur'an "):self.client.surahlist(msg,wait)
@@ -254,10 +254,11 @@ class LineBot(object):
                                         except Exception as e:
                                             self.client.sendMessage(to,str(e))
                             if waita['name'][waita['info'][saya]]["pay"] <= time.time():
-                                self.client.sendMention(to, " 「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nYou got Invalid!\n  Contact me at @!",'',[saya,'uac8e3eaf1eb2a55770bf10c3b2357c33'])
+                                self.client.sendMention(to, " 「 Expired 」\nSo Sorry @!your selfbot Expired if you wanna renew ur selfbot? pm >@!<\nI will shutdown now",'',[saya,'uac8e3eaf1eb2a55770bf10c3b2357c33'])
                                 os.system('screen -S %s -X kill'%waita['info'][msg._from])
 
         except:
             e = traceback.format()
             with open("e","a") as error:error.write("\n{}".format(e))
+
 
