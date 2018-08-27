@@ -22,7 +22,7 @@ def loggedIn(func):
 class LineClient(LineApi, LineModels, LineTimeline):
     _unsendMessageReq = 0
     def __init__(self, id=None, passwd=None, authToken=None, certificate=None, systemName=None, showQr=False, appName=None, phoneName=None, keepLoggedIn=True):
-        
+
         LineApi.__init__(self)
 
         if not (authToken or id and passwd):
@@ -239,7 +239,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
                 no = 0
                 ret_ = "╭──「 Youtube 」\n│Type: Youtube Video"
                 for music in a["items"]:
-                    no += 1 
+                    no += 1
                     asd = "\n│{}. {}".format(no,music['snippet']['title'])
                     if no == len(a["items"]):ss='╰'
                     else:ss='│'
@@ -293,7 +293,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
     def urban(self,wait):return "╭───「 Urban 」─\n│    | Command |  \n│Search Urban\n│  Key: "+wait["setkey"].title()+" urban [query]\n│Detail Urban\n│  Key: "+wait["setkey"].title()+" urban [query|1]\n│Youtube Downloader\n│  Key: "+wait["setkey"].title()+" ytdl [query|1]\n╰──────"
 
     def autoreadon(self,wait):return " 「 Auto Read 」\nUsage:"+wait["setkey"]+" autoread on <trigger>\nTrigger:\n1 - Personal\n2 - Group"
-    def autoreadoff(self,wait):return " 「 Auto Read 」\nUsage:"+wait["setkey"]+" autoread off <trigger>\nTrigger:\n1 - Personal\n2 - Group"    
+    def autoreadoff(self,wait):return " 「 Auto Read 」\nUsage:"+wait["setkey"]+" autoread off <trigger>\nTrigger:\n1 - Personal\n2 - Group"
     def list(self,wait):return "╭───「 List 」─\n│    | Command |  \n│List Groups\n│  Key: "+wait["setkey"].title()+" list groups\n│List Sticker\n│  Key: "+wait["setkey"].title()+" list sticker\n│List Image\n│  Key: "+wait["setkey"].title()+" list pict\n│List WL\n│  Key: "+wait["setkey"].title()+" whitelist\n│List BL\n│  Key: "+wait["setkey"].title()+" blacklist\n│List ML\n│  Key: "+wait["setkey"].title()+" mimiclist\n╰──────"
     def group(self,wait):return "╭───「 Group Set 」─\n│    | Command |  \n│Auto Respon\n│  Key: "+wait["setkey"].title()+" autorespon\n│Welcome Message\n│  Key: "+wait["setkey"].title()+" welcomemsg\n│Leave Message\n│  Key: "+wait["setkey"].title()+" leavemsg\n╰──────"
     def friend(self,wait):return "╭───「 Friend 」─\n│    | Command |  \n│List Friends\n│  Key: "+wait["setkey"].title()+" list friend\n│Del Friend\n│  Key: "+wait["setkey"].title()+" del friend [on|<|>|-|@|num]\n╰──────"
@@ -1173,7 +1173,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
                 b = str(a['id'])
                 self.sendImageWithURL(to,'https://stickershop.line-scdn.net/stickershop/v1/sticker/'+b+'/ANDROID/sticker.png')
     def mentions(self,wait):a=wait["setkey"].title();return "╭「 Mention 」─\n│    | Command |  \n│Mention By Num\n│ Key: "+a+"mention [num|>|<|1-5]\n│Spam Mention\n│ Key: "+a+"mention [2|@]\n│Mentionall Member\n╰ Key: "+a+"mentionall"
-    
+
     def keluarinmanteman(self,msg,wait,sas):
         if msg.text.lower() == 'bye':
             for a in sas:
@@ -1213,7 +1213,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
                 if wait["GN"] == True:
                     try:
                         self.downloadObjectMsg(msg_id,'path','dataSeen/'+msg.to+'.png')
-                    except Exception as e:                         
+                    except Exception as e:
                         self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                     wait["GN"] = False
                 if msg.to in wait["setTimess"]:
@@ -1221,7 +1221,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
                         path = self.downloadObjectMsg(msg.id,'path','dataSeen/adityab.png')
                         self.updateGroupPicture(msg.to,path)
                         self.sendMessage(msg.to, " 「 Group 」\nType: Change Cover Group\nStatus: Cover Group Hasbeen change♪")
-                    except Exception as e:                         
+                    except Exception as e:
                         self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                     wait["setTimess"].remove(msg.to)
                 if wait['ChangeGDP'] == True:
@@ -1259,7 +1259,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
         if msg.contentType == 13:
                 self.adityeksekusidata(msg,wait)
                 if msg.to in wait["kitsunecontact"]:
-                    s=msg.contentMetadata["mid"];a = self.getContact(s);zxc = " 「 Contact 」\nName: @!\n\nMid: "+s+"\n\nStatus Message:\n"+a.kitsuneBio 
+                    s=msg.contentMetadata["mid"];a = self.getContact(s);zxc = " 「 Contact 」\nName: @!\n\nMid: "+s+"\n\nStatus Message:\n"+a.kitsuneBio
                     self.sendMention(msg.to, zxc,'', [s])
     def listsimpanan(self,text,data={}):
         if data == {}:
@@ -1549,7 +1549,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
         self.sendMessage(to," 「 Speed 」\nType: Speed\n - Took : %.3fms\n - Taken: %.10f" % (took/4,elapsed_time/4))
     def setautojoinm(self,wait,msg):
         wait["Members"] = int(msg.text.split(" ")[2])
-        self.sendMessage(msg.to, " 「 Autojoin 」\nType: Minim Members\nStatus: Success Set\nTo: {} Members".format(wait["Members"]))    
+        self.sendMessage(msg.to, " 「 Autojoin 」\nType: Minim Members\nStatus: Success Set\nTo: {} Members".format(wait["Members"]))
     def adityeksekusidata(self,msg,wait):
         a = []
         a.append(msg.contentMetadata["mid"])
@@ -1639,8 +1639,8 @@ class LineClient(LineApi, LineModels, LineTimeline):
         +ab+"media\n│" \
         +"renew\n│" \
         +"mykey\n├────────\n"
-        zxc = a.title()+"│ • CR: @!\n│ • SB Edition\n╰────────"
-        return self.sendMention(msg.to,zxc.strip(),'',['u8cae982abc647f463d9d1baae6138d57'])
+        zxc = a.title()+"│ Creator @!\n│ Free Selfbot\n╰────────"
+        return self.sendMention(msg.to,zxc.strip(),'',['uac8e3eaf1eb2a55770bf10c3b2357c33'])
     @loggedIn
     def removeChatRoomAnnouncement(self, chatRoomMid, announcementSeq):
         return self._client.removeChatRoomAnnouncement(0, chatRoomMid, announcementSeq)
@@ -1692,7 +1692,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
         n = len(self.getAllContactIds())
         try:
             self.clearContacts()
-        except: 
+        except:
             pass
         t = len(self.getAllContactIds())
         self.sendMessage(msg.to,"Friends before: %s\nFriends after:%s\nTotal removed:%s"%(n,t,(n-t)))
@@ -1748,11 +1748,11 @@ class LineClient(LineApi, LineModels, LineTimeline):
     def unsendMessage(self, messageId):
         self._unsendMessageReq += 1
         return self._client.unsendMessage(self._unsendMessageReq, messageId)
-        
+
     @loggedIn
     def removeAllMessages(self, lastMessageId):
         return self._client.removeAllMessages(0, lastMessageId)
-        
+
     @loggedIn
     def sendChatChecked(self, consumer, messageId):
         return self._client.sendChatChecked(0, consumer, messageId)
@@ -1766,7 +1766,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
         return self._client.getLastReadMessageIds(0,chatId)
 
     """Contact"""
-        
+
     @loggedIn
     def blockContact(self, mid):
         return self._client.blockContact(0, mid)
@@ -1837,7 +1837,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
     @loggedIn
     def reissueUserTicket(self, expirationTime=100, maxUseCount=100):
         return self._client.reissueUserTicket(expirationTime, maxUseCount)
-    
+
     @loggedIn
     def clone(self, mid):
         contact = self.getContact(mid)
@@ -1854,10 +1854,10 @@ class LineClient(LineApi, LineModels, LineTimeline):
             key1 = key["MENTIONEES"][0]["M"]
             self.clone(key1)
             group = self.getContact(key1);contact = "http://dl.profile.line-cdn.net/" + group.pictureStatus;self.sendImageWithURL(to,contact)
-            self.sendMention(to, ' 「 Copy Profile 」\n- Target: @!\n- Status: Success Copy profile♪','',[key1])  
+            self.sendMention(to, ' 「 Copy Profile 」\n- Target: @!\n- Status: Success Copy profile♪','',[key1])
 
     """Group"""
-    
+
     @loggedIn
     def findGroupByTicket(self, ticketId):
         return self._client.findGroupByTicket(ticketId)
@@ -1937,7 +1937,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
         return self._client.leaveRoom(0, roomId)
 
     """Call"""
-        
+
     @loggedIn
     def acquireCallRoute(self, to):
         return self._client.acquireCallRoute(to)
