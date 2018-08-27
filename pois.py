@@ -123,8 +123,8 @@ def RECEIVE_MESSAGE(op):
                             else:sd = humanize.naturaltime(datetime.fromtimestamp(wait['name'][wait['info'][a]]["pay"]))
                             if wait['name'][wait['info'][a]]["user"] == "":cd = "None."
                             else:cd = wait['name'][wait['info'][a]]["user"]
-                            if no == len(h):msgas+='\n{}. @!\nName : {}\nExpired on : {}'.format(no,cd,sd)
-                            else:msgas += '\n{}. @!\nName : {}\nExpired on : {}'.format(no,cd,sd)
+                            if no == len(h):msgas+='\n{}. @!\n   Name : {}\n   Expired on : {}'.format(no,cd,sd)
+                            else:msgas += '\n{}. @!\n   Name : {}\n   Expired on : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」', h)
             if dzin.lower() == '!runall':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
@@ -162,7 +162,7 @@ def RECEIVE_MESSAGE(op):
                         hours = int(ti/60/60 %24)
                         days = int(ti/60/60/24)
                         wait['name'][us]["pay"] = wait['name'][us]["pay"]
-                        hasil = "   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nUser: @!\nFilename : {}\nExpired on: {} Days {} Hours {} Seconds\n  Command : help".format(us,days,hours,minu)
+                        hasil = "          「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nLogin Status : Successfully\nUser: @!\nFilename : {}\nExpired on: {} Days {} Hours {} Seconds\n  Command : help".format(us,days,hours,minu)
                         if wait["name"][us]["pay"] <= time.time():
                             sendMention(msg._from, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nHei @! Your got Expired hee im so sorry!','「 LOGIN SELFBOT 」', [msg._from])
                         else:
