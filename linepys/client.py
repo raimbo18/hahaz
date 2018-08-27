@@ -1460,7 +1460,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
                         else:pass
                         break
             if msg.text.lower().startswith('delsb '):
-                if msg._from in ['u8cae982abc647f463d9d1baae6138d57','u19fbdfb9a9ac4a72cfa1e117b8019415']:
+                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
@@ -1527,7 +1527,7 @@ class LineClient(LineApi, LineModels, LineTimeline):
         hours = int(ti/60/60 %24)
         days = int(ti/60/60/24)
         text = " 「 About 」\n'Self' Edition♪\n「 Subscription 」\nExpired: {}\nIn days: {} days {} hour {} min{}\nName: @!\nVersion: 2.7\nOwner: @!".format(datetime.fromtimestamp(waita['name'][waita["info"][msg._from]]["pay"]).strftime('%Y-%m-%d %H:%M:%S') ,days,hours,minu,dit)
-        mids = [self.getProfile().mid, 'u19fbdfb9a9ac4a72cfa1e117b8019415']
+        mids = [self.getProfile().mid, 'uac8e3eaf1eb2a55770bf10c3b2357c33']
         self.sendMention(msg.to, text,'', mids)
         self.sendContact(msg.to,self.getProfile().mid)
     def listgroup(self):
