@@ -64,7 +64,7 @@ def RECEIVE_MESSAGE(op):
         else:
             if dzin.lower() == '!help':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
-                    sendMention(msg.to, '╭─☾ È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● !puyloginsb\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ !Alluser\n┊○ !Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
+                    sendMention(msg.to, '╭─☾ È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● !puylogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ !Alluser\n┊○ !Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
             if dzin.lower().startswith("$ ") and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:q=dzin.replace("$ ","");s=os.popen(q);p=s.read();sendMention(msg.to, "「 OS SYSTEM 」\n@!\n"+p,'「 OS SYSTEM 」', [msg._from])
             if dzin.lower() == 'puy help':
                 if msg._from in wait['info']:
@@ -150,7 +150,7 @@ def RECEIVE_MESSAGE(op):
                             except:pass
                     sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nSuccess Kill all Selfbot!','「 KILL ALL SELFBOT 」', [key1])
             if dzin.lower() == "!relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nSuccess Restart Bot @!','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
-            if dzin.lower() == '!puyloginsb':
+            if dzin.lower() == '!puylogin':
                 if msg._from in wait['info'] or msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     try:del wait["limit"][msg._from]
                     except:pass
@@ -162,9 +162,9 @@ def RECEIVE_MESSAGE(op):
                         hours = int(ti/60/60 %24)
                         days = int(ti/60/60/24)
                         wait['name'][us]["pay"] = wait['name'][us]["pay"]
-                        hasil = "╭──「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│Type : Login selfbot\n│User: @!\n│File: {}\n│Expired: {} Days {} Hours {} Seconds\n╰Please type rname to view your key".format(us,days,hours,minu)
+                        hasil = "   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nUser: @!\nFilename : {}\nExpired on: {} Days {} Hours {} Seconds\n  Command : help".format(us,days,hours,minu)
                         if wait["name"][us]["pay"] <= time.time():
-                            sendMention(msg._from, '╭──「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│Type : Login selfbot\n╰Sorry @! your account expired, please contact admin for extend the active time','「 LOGIN SELFBOT 」', [msg._from])
+                            sendMention(msg._from, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nHei @! Your got Expired hee im so sorry!','「 LOGIN SELFBOT 」', [msg._from])
                         else:
                                 us = wait["info"][msg._from]
                                 wait["limit"][msg._from] =  '%s' % us
@@ -176,11 +176,11 @@ def RECEIVE_MESSAGE(op):
                                     transport.setCustomHeaders(a)
                                     protocol = TCompactProtocol.TCompactProtocol(transport)
                                     client = LineService.Client(protocol)
-                                    qr = client.getAuthQrcode(keepLoggedIn=1, systemName='DZIN SELFBOT V1.5')
+                                    qr = client.getAuthQrcode(keepLoggedIn=1, systemName='PUY')
                                     link = "line://au/q/" + qr.verifier
-                                    if msg.toType == 2:sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nNow checkout your Personal Message :@!','「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」', [msg._from])
+                                    if msg.toType == 2:sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nNow checkout your Personal Message : @!','「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」', [msg._from])
                                     else:pass
-                                    sendMention(msg._from, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nQr will Expired on 2minutes, hei @!\n\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
+                                    sendMention(msg._from, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nHei @!, Qr will Expired on 2 Minutes\n\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
                                     a.update({"x-lpqs" : '/api/v4/TalkService.do', 'X-Line-Access': qr.verifier})
                                     json.loads(requests.session().get('https://gd2.line.naver.jp/Q', headers=a).text)
                                     a.update({'x-lpqs' : '/api/v4p/rs'})
