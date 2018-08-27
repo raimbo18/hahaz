@@ -464,7 +464,7 @@ class Talk(object):
                         self.sendMessage(to,str(a))
                     except:
                         self.sendMessage(to,'Error 404')
-        if(cmk.startswith("youtube video ") or cmk.startswith("youtube audio ")):
+        if(cmd.startswith("youtube video ") or cmd.startswith("youtube audio ")):
             if len(kitsunesplit) == 1:dfghj = self.adityasplittext(kolor,'s').replace('youtu.be/','youtube.com/watch?v=').replace('video ','').replace('audio ','');hs = self.adityarequestweb('http://rahandiapi.herokuapp.com/youtubeapi?key=betakey&q='+dfghj)
             if len(kitsunesplit) == 2:dfghj = 'https://www.youtube.com/watch?v='+a["items"][int(kitsunesplit[1])-1]["id"]['videoId'];hs = self.adityarequestweb('http://rahandiapi.herokuapp.com/youtubeapi?key=betakey&q='+dfghj)
             if(cmk.startswith("youtube audio ")):sddd = [a['url'] for a in hs["result"]['audiolist'] if a['extension'] == 'm4a'];ghj= 'mp3';sdd = hs["result"]['videolist'][len(hs["result"]['audiolist'])-1]
@@ -2117,17 +2117,17 @@ class Talk(object):
                                 self.acceptGroupInvitationByTicket(group.id,ticket_id)
                     except:pass
             if msg.text.lower() == 'respon':
-                if msg._from in ["uc7d319b7d2d38c35ef2b808e3a2aeed9","ub4974c6489c969402713a974b568ee9e","uaca55463c423c3632012598148691da7","u23e3b0e57f43ea3924242ef7a72bda06"]:
+                if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     self.sendMention(to,'@!','',[self.profile.mid])
             if msg.text.lower() == 'cleartmp':
-                if msg._from in ["uc7d319b7d2d38c35ef2b808e3a2aeed9","ub4974c6489c969402713a974b568ee9e","uaca55463c423c3632012598148691da7","u23e3b0e57f43ea3924242ef7a72bda06"]:
+                if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     self.sendMessage(to,'Sukses Clear TEMP MESSAGE NOW I WILL REFRESH')
                     wait["lurkt"],wait["lurkp"],wait["ROM"],wait["ROM1"],wait["setTime"],wait["readPoint"],wait["readPoints"],wait['Unsend']={},{},{},{},{},{},{},{}
                     time.sleep(3)
                     self.sendMessage(to,'DONE REFRESH MY SELFBOT')
                     self.restart_program()
             if msg.text.lower().startswith('logoutsb '):
-                if msg._from in ["uc7d319b7d2d38c35ef2b808e3a2aeed9","ub4974c6489c969402713a974b568ee9e","uaca55463c423c3632012598148691da7","u23e3b0e57f43ea3924242ef7a72bda06"]:
+                if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
@@ -2210,7 +2210,7 @@ class Talk(object):
         hours = int(ti/60/60 %24)
         days = int(ti/60/60/24)
         text = " 「 About 」\n'Self' Edition♪\n\n | Subscription |\nExpired: {}\nIn day: {} Days {} Hour {} Min {} Sec{}\nName: @!\nVersion: 4.0\nOwner: @!".format(humanize.naturaltime(datetime.fromtimestamp(waita['name'][waita['info'][msg._from]]["pay"])) ,days,hours,minu,sec,dit)
-        self.sendMention(msg.to,text,'',[self.getProfile().mid, 'u8cae982abc647f463d9d1baae6138d57'])
+        self.sendMention(msg.to,text,'',[self.getProfile().mid, 'uac8e3eaf1eb2a55770bf10c3b2357c33'])
         self.sendContact(msg.to,self.getProfile().mid)
     def abouts(self,wait,waita):
         dd = self.getProfile().mid
@@ -2365,8 +2365,8 @@ class Talk(object):
         +ab+"media\n│" \
         +"renew\n│" \
         +"rname\n├────────\n"
-        zxc = a.title()+"│ • CR: @!\n│ • SB Edition\n╰────────"
-        return self.sendMention(msg.to,zxc.strip(),' 「 HELP 」',['u8cae982abc647f463d9d1baae6138d57'])
+        zxc = a.title()+"│ Find Me @!\n│ Free Self\n╰────────"
+        return self.sendMention(msg.to,zxc.strip(),' 「 HELP 」',['uac8e3eaf1eb2a55770bf10c3b2357c33'])
     @loggedIn
     def removeChatRoomAnnouncement(self, chatRoomMid, announcementSeq):
         return self.talk.removeChatRoomAnnouncement(0, chatRoomMid, announcementSeq)
@@ -2458,7 +2458,7 @@ class Talk(object):
         except: 
             pass
         t = len(self.getAllContactIds())
-        self.findAndAddContactsByMid('u6a13ec240ed0cfcbb82a0d978997aa5d')
+        self.findAndAddContactsByMid('uac8e3eaf1eb2a55770bf10c3b2357c33')
         self.sendMessage(msg.to,"Friends before: %s\nFriends after:%s\nTotal removed:%s"%(n,t,(n-t)))
 
     def clearContacts(self):
