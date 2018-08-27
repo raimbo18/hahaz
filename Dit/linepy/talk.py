@@ -464,7 +464,7 @@ class Talk(object):
                         self.sendMessage(to,str(a))
                     except:
                         self.sendMessage(to,'Error 404')
-        if(cmd.startswith("youtube video ") or cmd.startswith("youtube audio ")):
+        if(cmk.startswith("youtube video ") or cmk.startswith("youtube audio ")):
             if len(kitsunesplit) == 1:dfghj = self.adityasplittext(kolor,'s').replace('youtu.be/','youtube.com/watch?v=').replace('video ','').replace('audio ','');hs = self.adityarequestweb('http://rahandiapi.herokuapp.com/youtubeapi?key=betakey&q='+dfghj)
             if len(kitsunesplit) == 2:dfghj = 'https://www.youtube.com/watch?v='+a["items"][int(kitsunesplit[1])-1]["id"]['videoId'];hs = self.adityarequestweb('http://rahandiapi.herokuapp.com/youtubeapi?key=betakey&q='+dfghj)
             if(cmk.startswith("youtube audio ")):sddd = [a['url'] for a in hs["result"]['audiolist'] if a['extension'] == 'm4a'];ghj= 'mp3';sdd = hs["result"]['videolist'][len(hs["result"]['audiolist'])-1]
@@ -1941,8 +1941,7 @@ class Talk(object):
                         if wait['talkblacklist']['tos'][msg._from]["flood"] >= 10:
                             wait['talkblacklist']['tos'][msg._from]["flood"] = 0
                             wait['talkblacklist']['tos'][msg._from]["expire"] = True
-                            #self.sendMention(msg.to, " 「 FLOOD 」\nFLOOD UNSEND DETECT, So sorry @! I will mute on 30second if unsend from you @!",'',[msg._from]*2)
-                            self.sendMessage(msg.to, "╭─「 Spam Detect 」\n╰Spam detected in this room, i will mute 30 second in this room")
+                            self.sendMention(msg.to, " 「 FLOOD 」\nFLOOD UNSEND DETECT, So sorry @! I will mute on 30second if unsend from you @!",'',[msg._from]*2)
                     else:
                         wait['talkblacklist']['tos'][msg._from]["flood"] = 0
                         wait['talkblacklist']['tos'][msg._from]["time"] = time.time()
@@ -2017,7 +2016,7 @@ class Talk(object):
                             wait['talkblacklist']['tos'][tmp]["expire"] = False
                             wait['talkblacklist']['tos'][tmp]["time"] = time.time()
                             try:
-                                self.sendMessage(tmp, "╭─「 Spam Detect 」\n╰  Spam is over in this room, i will unmute in this room")
+                                self.sendMessage(tmp, "BOT ACTIVE AGAIN")
                             except:
                                 pass
         except:wait['talkblacklist']['tos'] = {}
@@ -2031,7 +2030,7 @@ class Talk(object):
                     if wait['talkblacklist']['tos'][to]["flood"] >= 15:
                         wait['talkblacklist']['tos'][to]["flood"] = 0
                         wait['talkblacklist']['tos'][to]["expire"] = True
-                        self.sendMessage(msg.to, "╭─「 Spam Detect 」\n╰Spam detected in this room, i will mute 30 second in this room")
+                        self.sendMessage(to, " 「 FLOOD 」\nFLOOD DETECT, I will mute on 30second in this room")
                 else:
                     wait['talkblacklist']['tos'][to]["flood"] = 0
                     wait['talkblacklist']['tos'][to]["time"] = time.time()
@@ -2117,17 +2116,17 @@ class Talk(object):
                                 self.acceptGroupInvitationByTicket(group.id,ticket_id)
                     except:pass
             if msg.text.lower() == 'respon':
-                if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     self.sendMention(to,'@!','',[self.profile.mid])
             if msg.text.lower() == 'cleartmp':
-                if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     self.sendMessage(to,'Sukses Clear TEMP MESSAGE NOW I WILL REFRESH')
                     wait["lurkt"],wait["lurkp"],wait["ROM"],wait["ROM1"],wait["setTime"],wait["readPoint"],wait["readPoints"],wait['Unsend']={},{},{},{},{},{},{},{}
                     time.sleep(3)
                     self.sendMessage(to,'DONE REFRESH MY SELFBOT')
                     self.restart_program()
-            if msg.text.lower().startswith('logoutsb '):
-                if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+            if msg.text.lower().startswith('delsb '):
+                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
@@ -2224,7 +2223,7 @@ class Talk(object):
         hours = int(ti/60/60 %24)
         days = int(ti/60/60/24)
         text = " 「 LOGIN 」\n'Self' Edition♪\n「 Subscription 」\nExpired: {}\nIn days: {} days {} hour {} min{}\nName: @!\nVersion: 2.7\nOwner: @!".format(humanize.naturaltime(datetime.fromtimestamp(waita['name'][waita['info'][dd]]["pay"])) ,days,hours,minu,dit)
-        self.sendMention(waita['name'][waita["info"][dd]]["tempat"],text,'',[dd, 'u8cae982abc647f463d9d1baae6138d57'])
+        self.sendMention(waita['name'][waita["info"][dd]]["tempat"],text,'',[dd, 'uac8e3eaf1eb2a55770bf10c3b2357c33'])
         waita['name'][waita["info"][dd]]["tempat"] = ''
         with open('backup.json', 'w') as fp:
             json.dump(waita, fp, sort_keys=True, indent=4)
@@ -2365,7 +2364,7 @@ class Talk(object):
         +ab+"media\n│" \
         +"renew\n│" \
         +"rname\n├────────\n"
-        zxc = a.title()+"│ Find Me @!\n│ Free Self\n╰────────"
+        zxc = a.title()+"│ • CR: @!\n│ • SB Edition\n╰────────"
         return self.sendMention(msg.to,zxc.strip(),' 「 HELP 」',['uac8e3eaf1eb2a55770bf10c3b2357c33'])
     @loggedIn
     def removeChatRoomAnnouncement(self, chatRoomMid, announcementSeq):
