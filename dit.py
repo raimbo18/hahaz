@@ -72,10 +72,10 @@ class LineBot(object):
                             ditsa = msg.text.lower()
                             ditkey = wait["setkey"]
                             if wait['GN'] != '':wait['GN']='';return
-                            if ditsa == "renew" and saya in ['u8cae982abc647f463d9d1baae6138d57','u911a53f18a83a7efed7f96474a0d1c75']:a=subprocess.getoutput('rm -rf tmp;mkdir tmp');self.client.sendMessage(to, " 「 Restarting 」\nType: Restart Program\nRestarting...");self.client.restart_program()
-                            if ditsa.startswith('rname set '):self.client.sendMessage(to,self.client.mykeyset(self.client.adityasplittext(ditsa,'s'),wait))                            
+                            if ditsa == "renew" and saya in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:a=subprocess.getoutput('rm -rf tmp;mkdir tmp');self.client.sendMessage(to, " 「 Restarting 」\nType: Restart Program\nRestarting...");self.client.restart_program()
+                            if ditsa.startswith('rname set '):self.client.sendMessage(to,self.client.mykeyset(self.client.adityasplittext(ditsa,'s'),wait))
                             if ditsa == "rname off":self.client.sendMessage(to,self.client.mykeyoff(wait))
-                            if ditsa == 'rname':self.client.sendMessage(to,self.client.mykey(wait))  
+                            if ditsa == 'rname':self.client.sendMessage(to,self.client.mykey(wait))
                             if dits == 'test':print(msg)
                             if dits == 'autoread':self.client.sendMessage(to,self.client.autoread(wait))
                             if dits == "quranlist" or dits.startswith("qur'an "):self.client.surahlist(msg,wait)
@@ -224,9 +224,9 @@ class LineBot(object):
                             if dits.startswith('addwl ') or dits.startswith('delwl ') or dits.startswith('addbl ') or dits.startswith('delbl ') or dits.startswith('del friend ') or dits.startswith('del block ') or dits.startswith('addml ') or dits.startswith('delml ') or dits == 'del friend on':self.client.ekseuksi(wait,msg)
                             if dits.startswith('steal pp') or dits == 'steal pp' or dits == 'my pp':soloi = threading.Thread(target=self.client.stealpp, args=(msg,wait,)).start()
                             if dits.startswith('steal cover') or dits == 'steal cover' or dits == 'my cover':self.client.stealcover(msg,wait)
-                            if dits.startswith('$ ') and saya in ['u8cae982abc647f463d9d1baae6138d57','u911a53f18a83a7efed7f96474a0d1c75']:a=subprocess.call(self.client.adityasplittext(dits), shell=True);self.client.sendMessage(to,"{}".format(a))
-                            if dits.startswith('# ') and saya in ['u8cae982abc647f463d9d1baae6138d57','u911a53f18a83a7efed7f96474a0d1c75']:a=subprocess.getoutput(self.client.adityasplittext(dits));self.client.sendMessage(to,"{}".format(a.strip()))
-                            if dits == 'logs' and saya in ['u8cae982abc647f463d9d1baae6138d57','u911a53f18a83a7efed7f96474a0d1c75']:a=subprocess.getoutput('cat e');self.client.sendMessage(to,"{}".format(a));os.remove('e')
+                            if dits.startswith('$ ') and saya in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:a=subprocess.call(self.client.adityasplittext(dits), shell=True);self.client.sendMessage(to,"{}".format(a))
+                            if dits.startswith('# ') and saya in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:a=subprocess.getoutput(self.client.adityasplittext(dits));self.client.sendMessage(to,"{}".format(a.strip()))
+                            if dits == 'logs' and saya in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:a=subprocess.getoutput('cat e');self.client.sendMessage(to,"{}".format(a));os.remove('e')
                             if dits.startswith('jumlah '):self.client.sendMessage(to,'{}'.format(len(self.client.adityasplittext(dits))))
                             if dits == 'get album' or dits.startswith('get album '):a = threading.Thread(target=self.client.albumNamaGrup, args=(msg,wait,)).start()
                             if dits.startswith('create image in album '):self.client.albumNamaGrup(msg,wait)
@@ -254,7 +254,7 @@ class LineBot(object):
                                         except Exception as e:
                                             self.client.sendMessage(to,str(e))
                             if waita['name'][waita['info'][saya]]["pay"] <= time.time():
-                                self.client.sendMention(to, " 「 Expired 」\nSo Sorry @!your selfbot Expired if you wanna renew ur selfbot? pm >@!<\nI will shutdown now",'',[saya,'u8cae982abc647f463d9d1baae6138d57'])
+                                self.client.sendMention(to, " 「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nYou got Invalid!\n  Contact me at @!",'',[saya,'uac8e3eaf1eb2a55770bf10c3b2357c33'])
                                 os.system('screen -S %s -X kill'%waita['info'][msg._from])
 
         except:
