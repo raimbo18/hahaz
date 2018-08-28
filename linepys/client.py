@@ -3,7 +3,7 @@ from akads.ttypes import Message
 from .api import LineApi;from .models import LineModels;from .timeline import LineTimeline
 from random import randint
 from bs4 import BeautifulSoup
-from wikiapi import WikiApi
+#from wikiapi import WikiApi
 from akads.ttypes import ChatRoomAnnouncementContents,Location,ContactSetting,ContactType
 from datetime import datetime, timedelta, date
 from youtube_dl import YoutubeDL
