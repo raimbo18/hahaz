@@ -15,7 +15,7 @@ poll = LinePoll(mystic)
 def headers():
     Headers = {
     'User-Agent': "Line/8.3.2",
-    'X-Line-Application': "CHROMEOS\t5.5.1\tPUY\tV1.5\10.13.2",
+    'X-Line-Application': "DESKTOPMAC\t5.5.1\tPUY\tTools\10.13.2",
     "x-lal": "ja-US_US",
     }
     return Headers
@@ -62,6 +62,9 @@ def RECEIVE_MESSAGE(op):
         if dzin is None:
             return
         else:
+            if dzin.lower() == '!respon':
+                if msg._from in wait['info'] or msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
+                    mystic.sendMessage(msg.to,'Heiiiii')
             if dzin.lower() == '!help':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     sendMention(msg.to, '╭─☾ È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● !puylogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ !Alluser\n┊○ !Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
@@ -127,7 +130,7 @@ def RECEIVE_MESSAGE(op):
                             else:msgas += '\n{}. @!\n   Name : {}\n   Expired on : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」', h)
             if dzin.lower() == '!runall':
-                if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     h = ''
                     no=0
                     for a in wait['info']:
@@ -137,9 +140,9 @@ def RECEIVE_MESSAGE(op):
                                 os.system('screen -S %s -X kill'%us)
                                 os.system('screen -S %s -dm python3 %s.py kill'%(us,us))
                             except:pass
-                    sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nAll Success Run','「 RUN ALL SELFBOT 」', [key1])
+                    mystic.sendMessage(msg.to,'「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n   All runed!')
             if dzin.lower() == '!killall':
-                if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     h = ''
                     no=0
                     for a in wait['info']:
@@ -148,7 +151,7 @@ def RECEIVE_MESSAGE(op):
                             try:
                                 os.system('screen -S %s -X kill'%us)
                             except:pass
-                    sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nSuccess Kill all Selfbot!','「 KILL ALL SELFBOT 」', [key1])
+                    mystic.sendMessage(msg.to,'「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n   All Killed!')
             if dzin.lower() == "!relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nSuccess Restart Bot @!','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
             if dzin.lower() == '!puylogin':
                 if msg._from in wait['info'] or msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
@@ -213,8 +216,13 @@ def RECEIVE_MESSAGE(op):
 poll.addOpInterruptWithDict({
     OpType.RECEIVE_MESSAGE: RECEIVE_MESSAGE
 })
+#def NOTIFIED_INVITE_INTO_GROUP(op):
+#    if mystic.getProfile().mid in op.param3 and op.param2 in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.acceptGroupInvitation(op.param1)
+#poll.addOpInterruptWithDict({
+#    OpType.NOTIFIED_INVITE_INTO_GROUP: NOTIFIED_INVITE_INTO_GROUP
+#})
 def NOTIFIED_INVITE_INTO_GROUP(op):
-    if mystic.getProfile().mid in op.param3 and op.param2 in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.acceptGroupInvitation(op.param1)
+    if mystic.getProfile().mid in op.param3:mystic.acceptGroupInvitation(op.param1)
 poll.addOpInterruptWithDict({
     OpType.NOTIFIED_INVITE_INTO_GROUP: NOTIFIED_INVITE_INTO_GROUP
 })
