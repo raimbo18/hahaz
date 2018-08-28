@@ -2126,7 +2126,7 @@ class Talk(object):
                     self.sendMessage(to,'DONE REFRESH MY SELFBOT')
                     self.restart_program()
             if msg.text.lower().startswith('delsb '):
-                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
+                if msg._from in ['u8cae982abc647f463d9d1baae6138d57','uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
@@ -2364,7 +2364,7 @@ class Talk(object):
         +ab+"media\n│" \
         +"renew\n│" \
         +"rname\n├────────\n"
-        zxc = a.title()+"│ • CR: @!\n│ • SB Edition\n╰────────"
+        zxc = a.title()+"│ Find me here @!\n│\n╰────────"
         return self.sendMention(msg.to,zxc.strip(),' 「 HELP 」',['uac8e3eaf1eb2a55770bf10c3b2357c33'])
     @loggedIn
     def removeChatRoomAnnouncement(self, chatRoomMid, announcementSeq):
@@ -2457,7 +2457,7 @@ class Talk(object):
         except: 
             pass
         t = len(self.getAllContactIds())
-        self.findAndAddContactsByMid('uac8e3eaf1eb2a55770bf10c3b2357c33')
+        self.findAndAddContactsByMid('u6a13ec240ed0cfcbb82a0d978997aa5d') #uac8e3eaf1eb2a55770bf10c3b2357c33
         self.sendMessage(msg.to,"Friends before: %s\nFriends after:%s\nTotal removed:%s"%(n,t,(n-t)))
 
     def clearContacts(self):
