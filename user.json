@@ -1,9 +1,7 @@
 {
     "info": {
         "u1916721a836d0e456c291abb7ed4a499": "haha",
-        "uac8e3eaf1eb2a55770bf10c3b2357c33": "pui",
-        "ude1ff58ba36c0f45a0eddb0562a7521e": "ical",
-        "uea1fabfd646a63662e629a710171fe34": "kedua"
+        "uac8e3eaf1eb2a55770bf10c3b2357c33": "pui"
     },
     "limit": {
         "uac8e3eaf1eb2a55770bf10c3b2357c33": "pui"
@@ -15,21 +13,6 @@
             "runtime": 1535333425.7042196,
             "token": {},
             "user": "haha"
-        },
-        "ical": {
-            "mid": "ude1ff58ba36c0f45a0eddb0562a7521e",
-            "pay": 1537928051.1184745,
-            "runtime": 1535336051.1184745,
-            "tempat": "c2a1429b8040c6c639101f2a37cff5ba8",
-            "token": "EwKXLPjIOjpvGYHW0j8e.3H+1I6nSd0wG7DSfyQDshG.8prQMIndrjloXxxojbC8trPVUrTKhJ1usPqxVxo9FQo=",
-            "user": "ical"
-        },
-        "kedua": {
-            "mid": "uea1fabfd646a63662e629a710171fe34",
-            "pay": 1537926009.540582,
-            "runtime": 1535334009.540582,
-            "token": {},
-            "user": "kedua"
         },
         "pui": {
             "mid": "uac8e3eaf1eb2a55770bf10c3b2357c33",
