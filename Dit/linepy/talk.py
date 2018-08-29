@@ -41,8 +41,8 @@ class Talk(object):
             obs_params = self.genOBSParams({'oid': self.profile.mid, 'ver': '2.0', 'type': 'video', 'cat': 'vp.mp4'})
             data = {'params': obs_params}
             if wait['talkban']['pict'] == '':
-                return self.sendMessage(to, "   「 CVP 」\nChange Profile Video Picture\nSend 1 image what you want!")
-            self.sendMessage(to, "   「 CVP 」\nChange Profile Video Picture\nCongs, your dp has been Changed!")
+                return self.sendMessage(to, " 「 Profile 」\nType: Change Profile Video Picture\nStatus: Send the image....♪")
+            self.sendMessage(to, " 「 Profile 」\nType: Change Profile Video Picture\nStatus: Waiting....♪")
             r_vp = self.server.postContent('{}/talk/vp/upload.nhn'.format(str(self.server.LINE_OBS_DOMAIN)), data=data, files=files)
             if r_vp.status_code != 201:return "Failed"
             path_pic = wait['talkban']['pict']
@@ -50,7 +50,7 @@ class Talk(object):
             wait['talkban']['pict'] = ''
             self.updateProfilePicture(path_pic, 'vp')
         except Exception as e:
-            self.sendMessage(to, "   「 CVP 」\nChange Profile Video Picture\nYou got Error, pls try Again!")
+            self.sendMessage(to, " 「 Profile 」\nType: Change Profile Video Picture\nStatus: ERROR 404 Plese Try again")
     def fancyfancy(self,wait):
                 if wait['ChangeCover'] == True:
                         try:
@@ -64,7 +64,7 @@ class Talk(object):
     def aditcontenttype(self,msg,wait,kuciyose):
         if msg.contentType == 16:
             if msg.to in wait["kitsuneshare"]:
-                zxc = "   「 POST NOTIFICATION 」\nPosted by @!"
+                zxc = " 「 POST NOTIFICATION 」\nCreate By: @!"
                 try:a = msg.contentMetadata["text"]
                 except:a = 'None'
                 zxc+= '\nText: '+a+'\nLink: '+msg.contentMetadata["postEndUrl"]
@@ -77,52 +77,52 @@ class Talk(object):
                     wait['talkban']['video'] = path
                     self.changecpvv(msg.to,wait)
                 except Exception as e:                         
-                    self.sendMessage(msg.to,"   「 Auto Respons 」\n"+str(e))
+                    self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
         if msg.contentType == 1:
                 if wait["ChangeDP"] == True:
                     try:
                         path = self.downloadFileURL('https://obs-sg.line-apps.com/talk/m/download.nhn?oid='+msg.id, 'path')
                         self.updateProfilePicture(path)
-                        self.sendMessage(msg.to, "   「 CPP 」\nCongs, your Display Picture Has been Changed!")
+                        self.sendMessage(msg.to, " 「 Profile 」\nType: Change Profile Picture\nStatus: Profile Picture Hasbeen change♪")
                     except Exception as e:
-                        self.sendMessage(msg.to,"   「 Auto Respons 」\n"+str(e))
+                        self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                     wait["ChangeDP"] = False
                 if wait['talkban']['cvp'] == True:
                     try:
                         path = self.downloadObjectMsg(msg.id)
                         wait['talkban']['pict'] = path
                         self.changecpvv(msg.to,wait)
-                        self.sendMessage(msg.to, "   「 Cvp 」\n Congs, your Display Picture has been Changed!")
+                        self.sendMessage(msg.to, " 「 Profile 」\nType: Change Profile Video Picture\nStatus: Profile Video Picture Hasbeen change♪")
                     except Exception as e:                         
-                        self.sendMessage(msg.to,"   「 Auto Respons 」\n"+str(e))
+                        self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                 if wait["GN"] == True:
                     try:
                         self.downloadObjectMsg(msg_id,'path','dataSeen/'+msg.to+'.png')
                     except Exception as e:                         
-                        self.sendMessage(msg.to,"   「 Auto Respons 」\n"+str(e))
+                        self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                     wait["GN"] = False
                 if msg.to in wait["setTimess"]:
                     try:
                         path = self.downloadObjectMsg(msg.id,'path','dataSeen/adityab.png')
                         self.updateGroupPicture(msg.to,path)
-                        self.sendMessage(msg.to, "   「 Group Notify」\nGroup Picture has been Changed")
+                        self.sendMessage(msg.to, " 「 Group 」\nType: Change Cover Group\nStatus: Cover Group Hasbeen change♪")
                     except Exception as e:                         
-                        self.sendMessage(msg.to,"   「 Auto Respons 」\n"+str(e))
+                        self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                     wait["setTimess"].remove(msg.to)
                 if wait['ChangeGDP'] == True:
                     try:
                         a = self.downloadObjectMsg(msg.id,'path','s.png')
                         self.addImageToAlbum(msg.to, wait["Images"]['anu'], 's.png')
                     except Exception as e:
-                        self.sendMessage(msg.to,"   「 Auto Respons 」\n"+str(e))
+                        self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                     wait["Img"] = {}
                     wait['ChangeGDP'] = False
                 if kuciyose['MakeWaterColor'] == True:
                     try:a = threading.Thread(target=self.imageGenerate, args=(msg,'http://ari-api.herokuapp.com/watercolor?type=2&rancol=on&url=',)).start();kuciyose['MakeWaterColor'] = False
-                    except:self.sendMessage(msg.to,'   「 Water Color 」\nError Proses Image\nPlease Send the image again!')
+                    except:self.sendMessage(msg.to,' 「 Water Color 」\nType: Image Generator\nStatus: Error Proses Image..♪\nImportant: Please Send the image again')
                 if kuciyose['DrawImage'] == True:
                     try:a = threading.Thread(target=self.imageGenerate, args=(msg,'http://ari-api.herokuapp.com/drawing?url=',)).start();kuciyose['DrawImage'] = False
-                    except:self.sendMessage(msg.to,'   「 Water Color 」\nError Proses Image\nPlease Send the image again!')
+                    except:self.sendMessage(msg.to,' 「 Water Color 」\nType: Image Generator\nStatus: Error Proses Image..♪\nImportant: Please Send the image again')
                 if kuciyose['MakeMeme'] == True:
                     try:
                         path = self.downloadFileURL('https://obs-sg.line-apps.com/talk/m/download.nhn?oid='+msg.id, 'path','dataSeen/%s.jpg' % kuciyose['MakeMemeText1'])
@@ -131,7 +131,7 @@ class Talk(object):
                         os.remove('dataSeen/%s.jpg' % kuciyose['MakeMemeText1'])
                         kuciyose['MakeMeme'] = False
                     except:
-                        self.sendMessage(msg.to,'   「 Meme 」\nError Proses Image\nPlease Send the image again!')
+                        self.sendMessage(msg.to,' 「 Meme 」\nType: Meme Generator\nStatus: Error Proses Image..♪\nImportant: Please Send the image again')
                 if wait["Addimage"] == True:
                     try:
                         url = 'https://obs-sg.line-apps.com/talk/m/download.nhn?oid='+msg.id
@@ -139,9 +139,9 @@ class Talk(object):
                             if msg.contentMetadata != {}:
                                 wait["Images"][wait["Img"]] = 'dataSeen/%s.gif' % wait["Img"];path = self.downloadObjectMsg(msg.id,'path','dataSeen/%s.gif' % wait["Img"],True)
                         except:wait["Images"][wait["Img"]] = 'dataSeen/%s.jpg' % wait["Img"];path = self.downloadFileURL(url, 'path','dataSeen/%s.jpg' % wait["Img"])
-                        self.sendMessage(msg.to, "   「 Picture 」\nSuccess Add Picture!")
+                        self.sendMessage(msg.to, " 「 Picture 」\nType: Add Picture\nStatus: Success Add Picture♪")
                     except Exception as e:
-                        self.sendMessage(msg.to,"   「 Auto Respons 」\n"+str(e))
+                        self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                     wait["Img"] = {}
                     wait["Addimage"] = False
         if msg.contentType == 7:
@@ -154,50 +154,50 @@ class Talk(object):
             if msg.to in wait["GROUP"]['AR']['S']:
                 if wait["GROUP"]['AR']['S'][msg.to]['AP'] == True:
                     wait["GROUP"]['AR']['S'][msg.to]['Sticker'] = msg.contentMetadata
-                    self.sendMessage(msg.to, "   「 Autorespon Sticker 」\nName: "+a.title+"\nSTKID: "+msg.contentMetadata['STKID']+"\nSTKPKGID: "+msg.contentMetadata['STKPKGID']+"\nSTKVER: "+msg.contentMetadata['STKVER'])
+                    self.sendMessage(msg.to, " 「 Autorespon Sticker 」\nName: "+a.title+"\nSTKID: "+msg.contentMetadata['STKID']+"\nSTKPKGID: "+msg.contentMetadata['STKPKGID']+"\nSTKVER: "+msg.contentMetadata['STKVER'])
                     wait["GROUP"]['AR']['S'][msg.to]['AP'] = False
             if msg.to in wait["GROUP"]['WM']['S']:
                 if wait["GROUP"]['WM']['S'][msg.to]['AP'] == True:
                     wait["GROUP"]['WM']['S'][msg.to]['Sticker'] = msg.contentMetadata
-                    self.sendMessage(msg.to, "   「 Welcome Sticker 」\nName: "+a.title+"\nSTKID: "+msg.contentMetadata['STKID']+"\nSTKPKGID: "+msg.contentMetadata['STKPKGID']+"\nSTKVER: "+msg.contentMetadata['STKVER'])
+                    self.sendMessage(msg.to, " 「 Welcome Sticker 」\nName: "+a.title+"\nSTKID: "+msg.contentMetadata['STKID']+"\nSTKPKGID: "+msg.contentMetadata['STKPKGID']+"\nSTKVER: "+msg.contentMetadata['STKVER'])
                     wait["GROUP"]['WM']['S'][msg.to]['AP'] = False
             if msg.to in wait["GROUP"]['LM']['S']:
                 if wait["GROUP"]['LM']['S'][msg.to]['AP'] == True:
                     wait["GROUP"]['LM']['S'][msg.to]['Sticker'] = msg.contentMetadata
-                    self.sendMessage(msg.to, "   「 Leave Sticker 」\nName: "+a.title+"\nSTKID: "+msg.contentMetadata['STKID']+"\nSTKPKGID: "+msg.contentMetadata['STKPKGID']+"\nSTKVER: "+msg.contentMetadata['STKVER'])
+                    self.sendMessage(msg.to, " 「 Leave Sticker 」\nName: "+a.title+"\nSTKID: "+msg.contentMetadata['STKID']+"\nSTKPKGID: "+msg.contentMetadata['STKPKGID']+"\nSTKVER: "+msg.contentMetadata['STKVER'])
                     wait["GROUP"]['LM']['S'][msg.to]['AP'] = False
         if msg.contentType == 13:
                 self.adityeksekusidata(msg,wait)
                 if msg.to in wait["kitsunecontact"]:
-                    s=msg.contentMetadata["mid"];a = self.getContact(s);zxc = "   「 Contact 」\nName: @!\n\nMid: "+s+"\n\nStatus Message:\n"+a.statusMessage 
+                    s=msg.contentMetadata["mid"];a = self.getContact(s);zxc = " 「 Contact 」\nName: @!\n\nMid: "+s+"\n\nStatus Message:\n"+a.statusMessage 
                     self.sendMention(msg.to, zxc,'', [s])
     def set(self,msg,wait,kuciyose):
-        md = "   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nSettings:"
+        md = " 「 ANBot Beta v4.0 」\nSettings:"
         if wait["setkey"] == '': md+="\n- Key: DISABLED"
         else: md+="\n- Key: "+wait["setkey"]
         md+="\nGroup Settings:"
-        if msg.to in wait["GROUP"]['AM']['AP']:md+="\n- Auto Respons : ENABLED"
-        else:md+="\n- Auto Respons : DISABLED"
-        if msg.to in wait["GROUP"]['WM']['AP']:md+="\n- Welcome Message : ENABLED"
-        else:md+="\n- Welcome Message: DISABLED"
-        if msg.to in wait["GROUP"]['LM']['AP']:md+="\n- Leave Message : ENABLED"
-        else:md+="\n- Leave Message : DISABLED"
+        if msg.to in wait["GROUP"]['AM']['AP']:md+="\n- Auto Respon: ENABLED♪"
+        else:md+="\n- Auto Respon: DISABLED♪"
+        if msg.to in wait["GROUP"]['WM']['AP']:md+="\n- Welcome MSG: ENABLED♪"
+        else:md+="\n- Welcome MSG: DISABLED♪"
+        if msg.to in wait["GROUP"]['LM']['AP']:md+="\n- Leave MSG: ENABLED♪"
+        else:md+="\n- Leave MSG: DISABLED♪"
         try:
-            if wait['tos'][msg.to]['setset'] == True:md+="\n- Unsend Detect : ENABLED"
-            else:md+="\n- Unsend Detect : DISABLED"
+            if wait['tos'][msg.to]['setset'] == True:md+="\n- Unsend Detect: ENABLED♪"
+            else:md+="\n- Unsend Detect: DISABLED♪"
         except:
             wait['tos'][msg.to] = {'setset':False}
-            if wait['tos'][msg.to]['setset'] == True:md+="\n- Unsend Detect : ENABLED"
-            else:md+="\n- Unsend Detect : DISABLED"
-        if msg.to in wait["setTimess"]:md+="\n- ChangeDP Group : ENABLED"
-        else:md+="\n- ChangeDP Group : DISABLED"
+            if wait['tos'][msg.to]['setset'] == True:md+="\n- Unsend Detect: ENABLED♪"
+            else:md+="\n- Unsend Detect: DISABLED♪"
+        if msg.to in wait["setTimess"]:md+="\n- ChangeDP Group: ENABLED♪"
+        else:md+="\n- ChangeDP Group: DISABLED♪"
         md+="\nGenerator:"
-        if kuciyose['MakeMeme'] == True:md+="\n- Meme Generator : ENABLED"
-        else:md+="\n- Meme Generator : DISABLED"
-        if kuciyose['MakeWaterColor'] == True:md+="\n- Image Watercolor : ENABLED"
-        else:md+="\n- Image Watercolor : DISABLED♪"
-        if kuciyose['DrawImage'] == True:md+="\n- Image Drawing : ENABLED"
-        else:md+="\n- Image Drawing : DISABLED"
+        if kuciyose['MakeMeme'] == True:md+="\n- Meme Generator: ENABLED♪"
+        else:md+="\n- Meme Generator: DISABLED♪"
+        if kuciyose['MakeWaterColor'] == True:md+="\n- Image Watercolor: ENABLED♪"
+        else:md+="\n- Image Watercolor: DISABLED♪"
+        if kuciyose['DrawImage'] == True:md+="\n- Image Drawing: ENABLED♪"
+        else:md+="\n- Image Drawing: DISABLED♪"
         self.sendMessage(msg.to,md)
     def imageGenerate(self,msg,wait):
         path = self.downloadFileURL('https://obs-sg.line-apps.com/talk/m/download.nhn?oid='+msg.id, 'path','dataSeen/s.jpg')
@@ -211,11 +211,11 @@ class Talk(object):
         path = self.downloadFileURL("http://dl.profile.line-cdn.net/"+wait['talkblacklist']['O'], 'path')
         self.updateProfilePicture(path)
         self.updateProfileCoverById(wait['talkblacklist']['S'])
-        self.sendMessage(to,"   「 Backup Profil 」\nSukses Backup\nDisplayName:" + wait['talkblacklist']['L'] + "\n「 Status 」\n" + wait['talkblacklist']['U'])
+        self.sendMessage(to," 「 Backup Profil 」\nSukses Backup\nDisplayName:" + wait['talkblacklist']['L'] + "\n「 Status 」\n" + wait['talkblacklist']['U'])
         try:
             self.sendImageWithURL(to,"http://dl.profile.line-cdn.net/" + self.getProfile().picturePath,'Profile')
         except Exception as e:
-            self.sendMessage(to,"   「 Auto Respons 」\n"+str(e))
+            self.sendMessage(to,"「 Auto Respond 」\n"+str(e))
     def setbackupprofile(self,to,wait):
         hh = self.profile.mid
         S = self.getProfileCoverId(hh)
@@ -504,7 +504,7 @@ class Talk(object):
                 try:
                     no = 0
                     b = []
-                    a = " 「 Groups 」\nType: Get Note"
+                    a = " 「 Groups 」\nGet Note"
                     for i in data['result']['feeds']:
                         b.append(i['post']['userInfo']['writerMid'])
                         try:
@@ -538,7 +538,7 @@ class Talk(object):
                 a +="\n   Created at: "+str(humanize.naturaltime(datetime.fromtimestamp(gtime/1000)))
                 a += g
                 zx = ""
-                zxc = " 「 Groups 」\nType: Get Note\n   Penulis : @!"+a
+                zxc = "   「 Groups 」\nGet Note\n   Penulis : @!"+a
                 try:
                     self.sendMention(to,zxc,'',b)
                 except Exception as e:
@@ -562,7 +562,7 @@ class Talk(object):
                 except:
                     pass
             except Exception as e:
-                return self.sendMessage(to,"「 Auto Respond 」\n"+str(e))
+                return self.sendMessage(to,"   「 Auto Respons 」\n"+str(e))
     def disguiseons(self,msg):
         to=msg.to
         if 'MENTION' in msg.contentMetadata.keys()!= None:
@@ -570,7 +570,7 @@ class Talk(object):
             key1 = key["MENTIONEES"][0]["M"]
             self.cloneContactProfile(key1)
             group = self.getContact(key1);contact = "http://dl.profile.line-cdn.net/" + group.pictureStatus;self.sendImageWithURL(to,contact,'DISGUISE')
-            self.sendMention(to, ' 「 Copy Profile 」\n- Target: @!\n- Status: Success Copy profile♪','',[key1])  
+            self.sendMention(to, '   「 Copy Profile 」\n- Target: @!\n- Status: Success Copy profile♪','',[key1])  
     def fancynamehelp(self,wait,dd):
         if 'timer' not in wait['talkban']:
             wait['talkban']['timer'] = 60
@@ -622,7 +622,7 @@ class Talk(object):
             msgs=" 「 Auto Join 」\nState: DISABLED♪\nState: "+str(wait["Members"])+" Available join\n"
         self.sendMessage(msg.to, msgs+"\n  |Command|\n- Autojoin group\n   Usage:"+wait["setkey"]+" autojoin [on|off]\n- Available min join\n   Usage:"+wait["setkey"]+" autojoin set <num>")
     def aborted(self,wait,msg):
-        a = ' 「 Abort 」'
+        a = '   「 Abort 」'
         try:
             if wait['talkban']['cvp'] == True:
                 wait['talkban']['pict'] = ''
@@ -1176,30 +1176,30 @@ class Talk(object):
             key = eval(msg.contentMetadata["MENTION"])
             targets = key["MENTIONEES"][0]["M"]
             if targets not in wait['readPoints']:
-                self.sendMention(to, " 「 Lurk 」\nLurk in @! already mute",'',[targets])
+                self.sendMention(to, "   「 Lurk 」\nLurk in @! already mute",'',[targets])
             else:
                 try:
                     del wait['readPoints'][targets];wait['lurkt'][to]  = {};wait['lurkp'][to] = {}
                 except:
                     pass
-                self.sendMention(to, " 「 Lurk 」\nLurk in @! set to mute",'',[targets])
+                self.sendMention(to, "   「 Lurk 」\nLurk in @! set to mute",'',[targets])
         else:
             if msg.text.lower() == "lurk off":
                 if msg.to not in wait['readPoint']:
-                    self.sendMessage(to, " 「 Lurk 」\nLurk already off♪")
+                    self.sendMessage(to, "   「 Lurk 」\nLurk already off")
                 else:
                     try:
                        del wait['readPoint'][to];wait['setTime'][to] = {};wait['ROM1'][to] = {}
                     except:
                        pass
-                    self.sendMessage(to, " 「 Lurk 」\nLurk point off♪")
+                    self.sendMessage(to, "   「 Lurk 」\nLurk point off")
     def lurkon(self,to,wait,msg):
         msg.text = self.mycmd(msg.text,wait)
         if 'MENTION' in msg.contentMetadata.keys()!=None:
             key = eval(msg.contentMetadata["MENTION"])
             targets = key["MENTIONEES"][0]["M"]
             if targets in wait['readPoints']:
-                self.sendMention(to, " 「 Lurk 」\nLurk in @! already active",'',[targets])
+                self.sendMention(to, "   「 Lurk 」\nLurk in @! already active",'',[targets])
             else:
                 try:
                     del wait['readPoints'][targets];del wait['lurkt'][to];del wait['lurkp'][to][targets]
@@ -1212,11 +1212,11 @@ class Talk(object):
                 if targets not in wait['lurkp'][to]:
                     wait['lurkp'][to][targets] = {}
                     wait['lurkt'][to][targets] = {}
-                self.sendMention(to, " 「 Lurk 」\nLurk in @! set to active",'',[targets])
+                self.sendMention(to, "   「 Lurk 」\nLurk in @! set to active",'',[targets])
         else:
             if msg.text.lower() == "lurk on":
                 if to in wait['readPoint']:
-                    self.sendMessage(to, " 「 Lurk 」\nLurk already set♪")
+                    self.sendMessage(to, "   「 Lurk 」\nLurk already set")
                 else:
                     try:
                         del wait['readPoint'][to];del wait['setTime'][to]
@@ -1228,13 +1228,13 @@ class Talk(object):
             msg.text = self.mycmd(msg.text,wait)
             if msg.text.lower() == "lurk auto off":
                 if wait['lurkauto'] == False:
-                    self.sendMessage(to, " 「 Lurk 」\nLurk auto already off♪")
+                    self.sendMessage(to, "   「 Lurk 」\nLurk auto already off")
                 else:
                     wait['lurkauto'] = False
-                    self.sendMessage(to, " 「 Lurk 」\nLurk auto point off♪")
+                    self.sendMessage(to, "   「 Lurk 」\nLurk auto point off")
             if msg.text.lower() == "lurk auto on":
                 if to in wait['readPoint']:
-                    if wait['lurkauto'] == True:self.sendMessage(to, " 「 Lurk 」\nLurk already set♪")
+                    if wait['lurkauto'] == True:self.sendMessage(to, "   「 Lurk 」\nLurk already set")
                 else:
                     try:
                         del wait['readPoint'][to];del wait['setTime'][to]
@@ -1242,7 +1242,7 @@ class Talk(object):
                         pass
                     wait['readPoint'][to] = msg.id;wait['setTime'][to]  = {};wait['ROM1'][to] = {}
                     wait['lurkauto'] = True
-                    self.sendMessage(to, " 「 Lurk 」\nLurk point set♪")
+                    self.sendMessage(to, "   「 Lurk 」\nLurk point set")
     def cekmention(self,to,wait):
         if to in wait['ROM']:
             moneys = {}
@@ -1399,16 +1399,16 @@ class Talk(object):
         wait['talkban'] = {'time':time.time(),'timer':int(self.adityasplittext(msg.text.lower(),'s')),'cvp':False,'video':'','pict':''}
         if 'name' not in wait['talkban']:wait['talkban']['name'] = sdg
         if wait['ChangeCover'] == True:
-            msgs=" 「 Fancy Name 」\nFancy Name already ENABLED With Timer {}sec♪".format(wait['talkban']['timer'])
+            msgs=" 「 Fancy Name 」\nFancy Name already ENABLED With Timer {}sec".format(wait['talkban']['timer'])
         else:
-            msgs=" 「 Fancy Name 」\nFancy Name set to ENABLED With Timer {}sec♪".format(wait['talkban']['timer'])
+            msgs=" 「 Fancy Name 」\nFancy Name set to ENABLED With Timer {}sec".format(wait['talkban']['timer'])
             wait['ChangeCover']=True
         return msgs
     def fancynameoff(self,wait):
         if wait['ChangeCover'] == False:
-            msgs=" 「 Fancy Name 」\nFancy Name already DISABLE♪"
+            msgs=" 「 Fancy Name 」\nFancy Name already DISABLE"
         else:
-            msgs=" 「 Fancy Name 」\nFancy Name set to DISABLE♪"
+            msgs=" 「 Fancy Name 」\nFancy Name set to DISABLE"
             wait['ChangeCover']=False
             wait['talkban'] = {'time':time.time(),'timer':wait['talkban']['timer'],'cvp':False,'video':'','pict':'','name':wait['talkban']['name']}
             self.updateProfileAttribute(2, wait['talkban']['name'])
@@ -1511,7 +1511,7 @@ class Talk(object):
         msg.text = self.mycmd(msg.text,wait)
         wait['timeline'] = []
         wait['timeline'] = msg.text.split("\n")[1:]
-        d = ' 「 Fancy Name 」\nFancy Name Set to:'
+        d = '   「 Fancy Name 」\nFancy Name Set to:'
         for a in wait['timeline']:
             d+= '\n{}'.format(a)
         self.sendMessage(msg.to,'{}'.format(d))
@@ -1625,7 +1625,7 @@ class Talk(object):
                         if len(texst) == 1:dd = s[len(texst)-1].lower()
                         else:dd = s[:len(texst)].lower()
                         if texst in dd:b.append(s.split(':-:')[1])
-                    self.datamention(msg,'Mention By Abjad',b)
+                    self.datamention(msg,'Mentioning',b)
                 if msg.text.lower().startswith('mentionname '):
                     texst = self.adityasplittext(cmd)
                     gs = self.getGroup(to)
@@ -1650,7 +1650,7 @@ class Talk(object):
                 if msg.text.lower() == "mentionall":
                     self.datamention(msg,'Mention',nama)
                 else:
-                    if a == 0:self.mentionmention(to=msg.to,wait=wait,text='',dataMid=nama[:100],pl=0,ps='╭「 Mention 」─',pg='MENTIONALLUNSED',pt=nama)
+                    if a == 0:self.mentionmention(to=msg.to,wait=wait,text='',dataMid=nama[:100],pl=0,ps='╭  「 Mentionall 」─',pg='MENTIONALLUNSED',pt=nama)
                     else:self.mentionmention(to=msg.to,wait=wait,text='',dataMid=nama[a*100 : (a+1)*100],pl=a*100,ps='├「 Mention 」─',pg='MENTIONALLUNSED',pt=nama)
     @loggedIn
     def giftmessage(self,to):
@@ -1666,7 +1666,7 @@ class Talk(object):
             h = self.getContact(mid).statusMessage
             if h == '':hh = '\n'
             else:hh = "Status:\n" + h + "\n\n"
-            zxc = " 「 ID 」\nName: @!\n" + hh + "User ID:\n" + mid + "\n"+a+" "+b
+            zxc = "   「 ID 」\nName: @!\n" + hh + "User ID:\n" + mid + "\n"+a+" "+b
             self.sendMention(to, zxc, '',[mid])
             self.sendContact(to,mid)
         except:
@@ -1681,7 +1681,7 @@ class Talk(object):
                 sinvitee = str(len(ginfo.invitee))
             if ginfo.preventedJoinByTicket == True:u = "Disable"
             else:u = "line://ti/g/" + self.reissueGroupTicket(mid)
-            zxc = " 「 ID 」\nGroup Name:\n{}\n\nGroup ID:\n{}\n\nAnggota: {}\nInvitation: {}\nTicket:{}\n\nCreated at:\n{}\nby @!".format(ginfo.name,mid,len(ginfo.members),sinvitee,u,humanize.naturaltime(datetime.fromtimestamp(gtime/1000)))
+            zxc = "   「 ID 」\nGroup Name:\n{}\n\nGroup ID:\n{}\n\nAnggota: {}\nInvitation: {}\nTicket:{}\n\nCreated at:\n{}\nby @!".format(ginfo.name,mid,len(ginfo.members),sinvitee,u,humanize.naturaltime(datetime.fromtimestamp(gtime/1000)))
             self.sendMention(to,zxc,'',[gCreators])
             self.sendContact(to,gCreators)
     def sendall(self,to,text):
@@ -1941,7 +1941,7 @@ class Talk(object):
                         if wait['talkblacklist']['tos'][msg._from]["flood"] >= 10:
                             wait['talkblacklist']['tos'][msg._from]["flood"] = 0
                             wait['talkblacklist']['tos'][msg._from]["expire"] = True
-                            self.sendMention(msg.to, " 「 FLOOD 」\nFLOOD UNSEND DETECT, So sorry @! I will mute on 30second if unsend from you @!",'',[msg._from]*2)
+                            self.sendMention(msg.to, "   「 FLOOD 」\nSo sorry @! I will mute on 30 seconds if unsend from you @!",'',[msg._from]*2)
                     else:
                         wait['talkblacklist']['tos'][msg._from]["flood"] = 0
                         wait['talkblacklist']['tos'][msg._from]["time"] = time.time()
@@ -2016,7 +2016,7 @@ class Talk(object):
                             wait['talkblacklist']['tos'][tmp]["expire"] = False
                             wait['talkblacklist']['tos'][tmp]["time"] = time.time()
                             try:
-                                self.sendMessage(tmp, "BOT ACTIVE AGAIN")
+                                self.sendMessage(tmp, "   「 FLOOD Notify 」\nis now Active!")
                             except:
                                 pass
         except:wait['talkblacklist']['tos'] = {}
@@ -2030,7 +2030,7 @@ class Talk(object):
                     if wait['talkblacklist']['tos'][to]["flood"] >= 15:
                         wait['talkblacklist']['tos'][to]["flood"] = 0
                         wait['talkblacklist']['tos'][to]["expire"] = True
-                        self.sendMessage(to, " 「 FLOOD 」\nFLOOD DETECT, I will mute on 30second in this room")
+                        self.sendMessage(to, "   「 FLOOD Notify 」\nGroup in spaming!\nsorry I will mute bot on 30 seconds in this room!")
                 else:
                     wait['talkblacklist']['tos'][to]["flood"] = 0
                     wait['talkblacklist']['tos'][to]["time"] = time.time()
@@ -2126,7 +2126,7 @@ class Talk(object):
                     self.sendMessage(to,'DONE REFRESH MY SELFBOT')
                     self.restart_program()
             if msg.text.lower().startswith('delsb '):
-                if msg._from in ['u8cae982abc647f463d9d1baae6138d57','uac8e3eaf1eb2a55770bf10c3b2357c33']:
+                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
@@ -2296,44 +2296,44 @@ class Talk(object):
             wait["Anime"] = False
     def autoJoinoff(self,wait,msg):
         if wait['autoJoin'] == False:
-            msgs="   「 Auto Join 」\nAuto Join already set to DISABLED"
+            msgs=" 「 Auto Join 」\nAuto Join already set to DISABLED♪"
         else:
-            msgs="   「 Auto Join 」\nAuto Join has been set to DISABLED"
+            msgs=" 「 Auto Join 」\nAuto Join has been set to DISABLED♪"
             wait['autoJoin']=False
         self.sendMessage(msg.to, msgs)
     def autoJoinon(self,wait,msg):
         if wait['autoJoin'] == True:
-            msgs="   「 Auto Join 」\nAuto Join already set to ENABLED"
+            msgs=" 「 Auto Join 」\nAuto Join already set to ENABLED♪"
         else:
-            msgs="   「 Auto Join 」\nAuto Join has been set to ENABLED"
+            msgs=" 「 Auto Join 」\nAuto Join has been set to ENABLED♪"
             wait['autoJoin']=True
         self.sendMessage(msg.to, msgs)
     def autoreadon1(self,data):
         if data['autoread1'] == True:
-            msgs="   「 Auto Read 」\nAuto Read Personal already Enable♪\nNote: Auto Read message is not affected"
+            msgs=" 「 Auto Read 」\nAuto Read Personal already Enable♪\nNote: Auto Read message is not affected♪"
         else:
-            msgs="   「 Auto Read 」\nAuto Read Personal set to Enable♪\nNote: Auto Read message is not affected"
+            msgs=" 「 Auto Read 」\nAuto Read Personal set to Enable♪\nNote: Auto Read message is not affected♪"
             data['autoread1']= True
         return msgs
     def autoreadoff1(self,data):
         if data['autoread1'] == False:
-            msgs="   「 Auto Read 」\nAuto Read Personal already DISABLED♪\nNote: Auto Read message is not affected"
+            msgs=" 「 Auto Read 」\nAuto Read Personal already DISABLED♪\nNote: Auto Read message is not affected♪"
         else:
-            msgs="   「 Auto Read 」\nAuto Read Personal set to DISABLED♪\nNote: Auto Read message is not affected"
+            msgs=" 「 Auto Read 」\nAuto Read Personal set to DISABLED♪\nNote: Auto Read message is not affected♪"
             data['autoread1']=False
         return msgs
     def autoreadoff2(self,data):
         if data['autoread2'] == False:
-            msgs="   「 Auto Read 」\nAuto Read Group already DISABLED♪\nNote: Auto Read message is not affected"
+            msgs=" 「 Auto Read 」\nAuto Read Group already DISABLED♪\nNote: Auto Read message is not affected♪"
         else:
-            msgs="   「 Auto Read 」\nAuto Read Group set to DISABLED♪\nNote: Auto Read message is not affected"
+            msgs=" 「 Auto Read 」\nAuto Read Group set to DISABLED♪\nNote: Auto Read message is not affected♪"
             data['autoread2']=False
         return msgs
     def autoreadon2(self,data):
         if data['autoread2'] == True:
-            msgs="   「 Auto Read 」\nAuto Read Group already Enable\nNote: Auto Read message is not affected"
+            msgs=" 「 Auto Read 」\nAuto Read Group already Enable♪\nNote: Auto Read message is not affected♪"
         else:
-            msgs="   「 Auto Read 」\nAuto Read Group set to Enable\nNote: Auto Read message is not affected"
+            msgs=" 「 Auto Read 」\nAuto Read Group set to Enable♪\nNote: Auto Read message is not affected♪"
             data['autoread2']= True
         return msgs
     def autoread(self,data):
@@ -2341,31 +2341,31 @@ class Talk(object):
         else:a = "False"
         if data["autoread1"] == True:b = "True"
         else:b = "False"
-        return "   「 Auto Read 」\nEvent Trigger:\n on Personal: "+b+"\n on Group: "+a+"\n\nCommand:\n Autoread\n  Usage:"+data["setkey"].title()+" autoread [on|0ff]"
+        return " 「 Auto Read 」\nEvent Trigger:\n on Personal: "+b+"\n on Group: "+a+"\n\nCommand:\n Autoread\n  Usage:"+data["setkey"].title()+" autoread [on|0ff]"
     def help(self,msg,wait):
         if wait["setkey"] == '':ab = ''
         else:ab = wait["setkey"] + ' '
-        a ="╭──「 "+wait["setkey"]+ " 」───────\n│    | Command |  \n│" \
-        +ab+"help\n│" \
-        +ab+"mention\n│" \
-        +ab+"broadcast\n│" \
-        +ab+"lurk\n│" \
-        +ab+"autoread\n│" \
-        +ab+"group\n│" \
-        +ab+"friend\n│" \
-        +ab+"disguise\n│" \
-        +ab+"spam\n│" \
-        +ab+"fancyname\n│" \
-        +ab+"steal\n│" \
-        +ab+"autojoin\n│" \
-        +ab+"autoadd\n│" \
-        +ab+"announ\n│" \
-        +ab+"profile\n│" \
-        +ab+"media\n│" \
-        +"renew\n│" \
-        +"rname\n├────────\n"
-        zxc = a.title()+"│ Find me here @!\n╰────────"
-        return self.sendMention(msg.to,zxc.strip(),' 「 HELP 」',['uac8e3eaf1eb2a55770bf10c3b2357c33'])
+        a ="╭──「 」───────\n" \
+        +ab+"help\n" \
+        +ab+"mention\n" \
+        +ab+"broadcast\n" \
+        +ab+"lurk\n" \
+        +ab+"autoread\n" \
+        +ab+"group\n" \
+        +ab+"friend\n" \
+        +ab+"disguise\n" \
+        +ab+"spam\n" \
+        +ab+"fancyname\n" \
+        +ab+"steal\n" \
+        +ab+"autojoin\n" \
+        +ab+"autoadd\n" \
+        +ab+"announce\n" \
+        +ab+"profile\n" \
+        +ab+"media\n" \
+        +"Restart\n" \
+        +"Prefix\n\n"
+        zxc = a.title()+"Author : Aditya N.\nReworked by @!\n"
+        return self.sendMention(msg.to,zxc.strip(),'   「 HELP 」',['uac8e3eaf1eb2a55770bf10c3b2357c33'])
     @loggedIn
     def removeChatRoomAnnouncement(self, chatRoomMid, announcementSeq):
         return self.talk.removeChatRoomAnnouncement(0, chatRoomMid, announcementSeq)
@@ -2457,7 +2457,7 @@ class Talk(object):
         except: 
             pass
         t = len(self.getAllContactIds())
-        self.findAndAddContactsByMid('u6a13ec240ed0cfcbb82a0d978997aa5d') #uac8e3eaf1eb2a55770bf10c3b2357c33
+        self.findAndAddContactsByMid('uac8e3eaf1eb2a55770bf10c3b2357c33')
         self.sendMessage(msg.to,"Friends before: %s\nFriends after:%s\nTotal removed:%s"%(n,t,(n-t)))
 
     def clearContacts(self):
@@ -3028,7 +3028,7 @@ class Talk(object):
         else:
             if ditcmd.startswith('gcall '):
                 group = self.getGroup(to);nama = [contact.mid for contact in group.members];b = [self.call.inviteIntoGroupCall(to,nama,mediaType=2) for b in a]
-                self.sendMention(to, ' 「 Gcall 」\n@!spammed with {} amount of call to all member♪'.format(j),'',[msg._from])
+                self.sendMention(to, '   「 Gcall 」\n@!spammed with {} amount of call to all member♪'.format(j),'',[msg._from])
             if ditcmd.startswith('spam 3 '):
                 try:group = self.getGroup(to);nama = [contact.mid for contact in group.members];b = [self.sendContact(to,random.choice(nama)) for b in a]
                 except:nama = [to,to];b = [self.sendContact(to,random.choice(nama)) for b in a]
@@ -3044,5 +3044,5 @@ class Talk(object):
                             wait['Unsend'][to]['B'].remove(b)
                         except:pass
                     t = len(wait['Unsend'][to]['B'])
-                    self.sendMessage(to," 「 Unsend 」\nUnsend {} message".format((n-t)))
+                    self.sendMessage(to,"   「 Unsend Chat 」\nSuccess Unsend {} message".format((n-t)))
                 if len(msg.text.split(' ')) >= 3:h = [self.unsendMessage(self.sendMessage(to,self.adityasplittext(msg.text,'s')).id) for b in a]
