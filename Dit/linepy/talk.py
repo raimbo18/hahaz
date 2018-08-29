@@ -969,8 +969,8 @@ class Talk(object):
             self.sendMessage(msg.to, " 「 Group 」\nType: Change Cover Group\nStatus: Send the image....")
     def spam(self,wait):return "╭───「 Spam 」─\n│    | Command |  \n│Message\n│  Key: "+wait["setkey"].title()+"spam 1 [1][enter|text]\n│Gift\n│  Key: "+wait["setkey"].title()+"spam 2 [1][@|]\n│Contact\n│  Key: "+wait["setkey"].title()+"spam 3 [1][@]\n│Tag\n│  Key: "+wait["setkey"].title()+"spam 4 [1][@]\n╰──────"
     def mykey(self,wait):
-        if wait["setkey"] == '':return "Your Key: DISABLED♪\nRname set - Set Your Key\nRname off - Disable Your Key\nRname reset - Reset Your Key"
-        else:return "Your Key: " + wait["setkey"].title() + "\nRname: - Set Your Key\nRname Off - Disable Your Key\nRname Reset - Reset Your Key"
+        if wait["setkey"] == '':return "  Your Prefix are [Off]\nPrefix set [Set Your Key]\nPrefix off [Disable Your Key]\nPrefix reset [Reset Your Key]"
+        else:return "Your Key: " + wait["setkey"].title() + "\nPrefix: [Set Your Key]\nPrefix Off [Disable Your Key]\nPrefix Reset -[Reset Your Key]"
     def getid(self,wait,msg,dits):
         if 'MENTION' in msg.contentMetadata.keys()!=None:
             key = eval(msg.contentMetadata["MENTION"])
@@ -1659,8 +1659,8 @@ class Talk(object):
         return self.sendMessage(to, text=None, contentMetadata={'PRDTYPE': 'STICKER','STKVER': '1','MSGTPL': b,'STKPKGID': '1380280'}, contentType=9)
     def getinformation(self,to,mid,data):
         try:
-            if mid in data["bots"]:a = "Whitelisted: Yes"
-            else:a = "Whitelisted: No"
+            if mid in data["bots"]:a = "Whitelisted: Yes\n"
+            else:a = "Whitelisted: No\n"
             if mid in data["blacklist"]:b = "Blacklisted: Yes"
             else:b = "Blacklisted: No"
             h = self.getContact(mid).statusMessage
