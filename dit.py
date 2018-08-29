@@ -170,7 +170,7 @@ class LineBot(object):
                             if dits == "lurk on" or dits.startswith("lurk on "):self.client.lurkon(to,wait,msg)
                             if dits == "lurk auto on" or dits == "lurk auto off":self.client.lurkauto(to,wait,msg)
                             if dits == "lurk off" or dits.startswith("lurk off "):self.client.lurkoff(to,wait,msg)
-                            if dits == "mentions":self.client.cekmention(to,wait)
+                            if dits == "mentionme":self.client.cekmention(to,wait)
                             if dits == 'whitelist':self.client.adityasuperdata(msg,wait,'Whitelist','wl',wait['bots'])
                             if dits == 'blacklist':self.client.adityasuperdata(msg,wait,'Blacklist','bl',wait['blacklist'])
                             if dits == 'mimiclist':self.client.adityasuperdata(msg,wait,'Mimiclist','ml',wait['target'])
