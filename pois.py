@@ -199,7 +199,7 @@ def RECEIVE_MESSAGE(op):
                         wait['name'][us]["pay"] = wait['name'][us]["pay"]
                         hasil = "@! Sukses login selfbot.".format(us)
                         if wait["name"][us]["pay"] <= time.time():
-                            mystic.sendMessage(msg.to, 'Maaf, status login anda telah kadaluwarsa, mohon daftar ulang!','「 LOGIN SELFBOT 」', [msg._from])
+                            mystic.sendMessage(to, 'Maaf, status login anda telah kadaluwarsa, mohon daftar ulang!','',)# [msg._from])
                         else:
                                 us = wait["info"][msg._from]
                                 wait["limit"][msg._from] =  '%s' % us
@@ -213,9 +213,9 @@ def RECEIVE_MESSAGE(op):
                                     client = LineService.Client(protocol)
                                     qr = client.getAuthQrcode(keepLoggedIn=1, systemName='PUY')
                                     link = "line://au/q/" + qr.verifier
-                                    if msg.toType == 2:mystic.sendMessage(msg.to, 'Cek PM','「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」', [msg._from])
+                                    if msg.toType == 2:mystic.sendMessage(to, 'Cek PM','')#, [msg._from])
                                     else:pass
-                                    mystic.sendMessage(msg.to, 'Hanya 2 menit\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
+                                    mystic.sendMessage(to, 'Hanya 2 menit\n{}'.format(link),'',) #[msg._from])
                                     a.update({"x-lpqs" : '/api/v4/TalkService.do', 'X-Line-Access': qr.verifier})
                                     json.loads(requests.session().get('https://gd2.line.naver.jp/Q', headers=a).text)
                                     a.update({'x-lpqs' : '/api/v4p/rs'})
@@ -231,20 +231,20 @@ def RECEIVE_MESSAGE(op):
                                     try:
                                         wait['name'][us]["token"] = res.authToken
                                         cpfile(us,wait['name'][us]["token"])
-                                        if msg.toType == 2:sendMention(msg.to, hasil,'「 LOGIN SELFBOT 」', [msg._from])
-                                        else:sendMention(msg._from, hasil,'「 LOGIN SELFBOT 」', [msg._from])
+                                        if msg.toType == 2:sendMention(msg.to, hasil,'', [msg._from])
+                                        else:sendMention(msg._from, hasil,'', [msg._from])
                                         os.system('screen -S %s -X kill'%us)
                                         os.system('screen -S %s -dm python3 %s.py kill'%(us,us))
                                     except:
-                                        if msg.toType == 2:mystic.sendMessage(msg.to, 'Maaf, qr kadaluwarsa, mohon login ulang!','「 LOGIN SELFBOT 」')#, [msg._from])
-                                        else:mystic.sendMessage(msg.to, 'Maaf, qr kadaluwarsa, mohon login ulang!','「 LOGIN SELFBOT 」', [msg._from])
+                                        if msg.toType == 2:mystic.sendMessage(to, 'Maaf, qr kadaluwarsa, mohon login ulang!')#, [msg._from])
+                                        else:mystic.sendMessage(to, 'Maaf, qr kadaluwarsa, mohon login ulang!')#, [msg._from])
                                     del wait["limit"][msg._from]
                                 except:
                                     del wait["limit"][msg._from]
                                     try:to = msg.to
                                     except:to=msg._from
-                                    mystic.sendMessage(msg.to, 'Maaf, status login anda kadaluwarsa, mohon login ulang!','「 LOGIN SELFBOT 」', [msg._from])
-                    else:mystic.sendMessage(msg.to, 'Maaf, status login anda kadaluwarsa, mohon login ulang!','「 LOGIN SELFBOT 」', [msg._from])
+                                    mystic.sendMessage(to, 'Maaf, status login anda Kadaluwarsa.')
+                    else:sendMention(msg.to,"@! got Invalid.",'', [msg._from])
 poll.addOpInterruptWithDict({
     OpType.RECEIVE_MESSAGE: RECEIVE_MESSAGE
 })
