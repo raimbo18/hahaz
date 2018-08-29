@@ -261,3 +261,4 @@ class LineBot(object):
             e = traceback.format()
             with open("e","a") as error:error.write("\n{}".format(e))
 
+
