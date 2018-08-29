@@ -3045,3 +3045,4 @@ class Talk(object):
                     t = len(wait['Unsend'][to]['B'])
                     self.sendMessage(to,"   「 Unsend Chat 」\nSuccess Unsend {} message".format((n-t)))
                 if len(msg.text.split(' ')) >= 3:h = [self.unsendMessage(self.sendMessage(to,self.adityasplittext(msg.text,'s')).id) for b in a]
+
