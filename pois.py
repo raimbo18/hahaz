@@ -96,8 +96,8 @@ def RECEIVE_MESSAGE(op):
                         nama = str(dzin.split(' ')[1])
                         wait['name'][nama] =  {"user":nama,"mid":key1,"pay":pay+60*60*24*80,"runtime":pay,"token":{}}
                         wait['info'][key1] =  '%s' % nama
-                        sendMention(msg.to, '   「 Adding Sb User 」\nNow @! already Registered!\nType !puyloginsb for loginSb.','「 ADD SERVICE 」', [key1])
-                    else:sendMention(msg.to, '   「 Adding Sb User 」\n  Got Invalid!\n@! already Included!','「 ADD SERVICE 」', [key1])
+                        sendMention(msg.to, '@! telah Ditambahkan.','「 ADD SERVICE 」', [key1])
+                    else:mystic.sendMessage(msg.to, 'Gagal!','「 ADD SERVICE 」', [key1])
             if dzin.lower().startswith('-user ') and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                 if 'MENTION' in msg.contentMetadata.keys()!= None:
                     key = eval(msg.contentMetadata["MENTION"])
@@ -110,15 +110,15 @@ def RECEIVE_MESSAGE(op):
                         except:pass
                         del wait['info'][key1]
                         del wait['name'][b]
-                        sendMention(msg.to, '   「 Deleting Sb User 」\nNow @! has been Deleted!','「 DEL SERVICE 」', [key1])
+                        sendMention(msg.to, '@! telah Dihapus.','「 DEL SERVICE 」', [key1])
                     else:
-                        sendMention(msg.to, '   「 Deleting Sb User 」\n  Got invalid!\n@! Not Registered','「 DEL SERVICE 」', [key1])
+                        sendMention(msg.to, 'Maaf, @! tidak terdaftar.','「 DEL SERVICE 」', [key1])
             if dzin.lower() == '!alluser':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     h = [a for a in wait['info']]
                     k = len(h)//100
                     for aa in range(k+1):
-                        msgas = '   「 Service List 」'
+                        msgas = '   「 Daftar Pengguna 」'
                         no=0
                         for a in h:
                             no+=1
@@ -161,7 +161,7 @@ def RECEIVE_MESSAGE(op):
                             if no == len(h):msgas+='\n{}. @!\n   Name : {}\n   Expired on : {}'.format(no,cd,sd)
                             else:msgas += '\n{}. @!\n    Name : {}\n    Expired on : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
-            if dzin.lower() == '!runall':
+            if dzin.lower() == '!onall':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     h = ''
                     no=0
@@ -172,8 +172,8 @@ def RECEIVE_MESSAGE(op):
                                 os.system('screen -S %s -X kill'%us)
                                 os.system('screen -S %s -dm python3 %s.py kill'%(us,us))
                             except:pass
-                    mystic.sendMessage(msg.to,'   「 Termin Notify 」\n   All service Runed!')
-            if dzin.lower() == '!killall':
+                    mystic.sendMessage(msg.to,'Semua Pengguna Diaktifkan')
+            if dzin.lower() == '!outall':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     h = ''
                     no=0
@@ -183,9 +183,9 @@ def RECEIVE_MESSAGE(op):
                             try:
                                 os.system('screen -S %s -X kill'%us)
                             except:pass
-                    mystic.sendMessage(msg.to,'   「 Termin Notify 」\n   All service Killed!')
-            if dzin.lower() == "!relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.sendMessage(msg.to, '   「 Termin Notify 」\nSuccess Restart Bot','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
-            if dzin.lower() == '!puyloginsb':
+                    mystic.sendMessage(msg.to,'Semua Pengguna Diberhentikan.')
+            if dzin.lower() == "!relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.sendMessage(msg.to, 'Sukses memulai ulang.','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
+            if dzin.lower() == 'puy login':
                 if msg._from in wait['info'] or msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     try:del wait["limit"][msg._from]
                     except:pass
@@ -197,9 +197,9 @@ def RECEIVE_MESSAGE(op):
                         hours = int(ti/60/60 %24)
                         days = int(ti/60/60/24)
                         wait['name'][us]["pay"] = wait['name'][us]["pay"]
-                        hasil = "          「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nLogin Status : Successfully\nUser: @!\nFilename : {}\nExpired on: {} Hari {} Jam {} Detik\n  Command : help".format(us,days,hours,minu)
+                        hasil = "@! Sukses login selfbot.".format(us)
                         if wait["name"][us]["pay"] <= time.time():
-                            sendMention(msg._from, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nHei @! You got Expired hee im so sorry!','「 LOGIN SELFBOT 」', [msg._from])
+                            sendMention(msg._from, 'Maaf, status login anda telah kadaluwarsa, mohon daftar ulang!','「 LOGIN SELFBOT 」', [msg._from])
                         else:
                                 us = wait["info"][msg._from]
                                 wait["limit"][msg._from] =  '%s' % us
@@ -213,9 +213,9 @@ def RECEIVE_MESSAGE(op):
                                     client = LineService.Client(protocol)
                                     qr = client.getAuthQrcode(keepLoggedIn=1, systemName='PUY')
                                     link = "line://au/q/" + qr.verifier
-                                    if msg.toType == 2:sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nLogin Status: Process...\nNow checkout your Personal Message @!','「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」', [msg._from])
+                                    if msg.toType == 2:mystic.sendMessage(msg.to, 'Cek PM','「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」', [msg._from])
                                     else:pass
-                                    sendMention(msg._from, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nHei @!, Qr will Expired on 2 Minutes\n\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
+                                    mystic.sendMessage(msg._from, 'Hanya 2 menit\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
                                     a.update({"x-lpqs" : '/api/v4/TalkService.do', 'X-Line-Access': qr.verifier})
                                     json.loads(requests.session().get('https://gd2.line.naver.jp/Q', headers=a).text)
                                     a.update({'x-lpqs' : '/api/v4p/rs'})
@@ -236,15 +236,15 @@ def RECEIVE_MESSAGE(op):
                                         os.system('screen -S %s -X kill'%us)
                                         os.system('screen -S %s -dm python3 %s.py kill'%(us,us))
                                     except:
-                                        if msg.toType == 2:sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nHei @!, your got Invalid im sorry, please ReLogin!','「 LOGIN SELFBOT 」', [msg._from])
-                                        else:sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nHei @!, your got Invalid im sorry, please ReLogin!','「 LOGIN SELFBOT 」', [msg._from])
+                                        if msg.toType == 2:mystic.sendMessage(msg.to, 'Maaf, qr kadaluwarsa, mohon login ulang!','「 LOGIN SELFBOT 」', [msg._from])
+                                        else:mystic.sendMessage(msg.to, 'Maaf, qr kadaluwarsa, mohon login ulang!','「 LOGIN SELFBOT 」', [msg._from])
                                     del wait["limit"][msg._from]
                                 except:
                                     del wait["limit"][msg._from]
                                     try:to = msg.to
                                     except:to=msg._from
-                                    sendMention(msg._from, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nHei @!, you got Expired im sorry!','「 LOGIN SELFBOT 」', [msg._from])
-                    else:sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nHei @!, you got Expired im sorry!','「 LOGIN SELFBOT 」', [msg._from])
+                                    mystic.sendMessage(msg._from, 'Maaf, status login anda kadaluwarsa, mohon login ulang!','「 LOGIN SELFBOT 」', [msg._from])
+                    else:mystic.sendMessage(msg.to, 'Maaf, status login anda kadaluwarsa, mohon login ulang!','「 LOGIN SELFBOT 」', [msg._from])
 poll.addOpInterruptWithDict({
     OpType.RECEIVE_MESSAGE: RECEIVE_MESSAGE
 })
