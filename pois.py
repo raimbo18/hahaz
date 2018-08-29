@@ -237,8 +237,8 @@ def RECEIVE_MESSAGE(op):
                                         os.system('screen -S %s -X kill'%us)
                                         os.system('screen -S %s -dm python3 %s.py kill'%(us,us))
                                     except:
-                                        if msg.toType == 2:sendMention(msg.to, 'Login gagal, mohon hubungi Puy!','', [msg._from])
-                                        else:sendMention(msg._from, 'Login gagal, mohon hubungi Puy!'', [msg._from])
+                                        if msg.toType == 2:mystic.sendMessage(msg.to, 'Login gagal, mohon hubungi Puy!', [msg._from])
+                                        else:mystic.sendMessage(msg._from, 'Login gagal, mohon hubungi Puy!', [msg._from])
                                     del wait["limit"][msg._from]
                                 except:
                                     del wait["limit"][msg._from]
