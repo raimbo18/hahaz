@@ -185,8 +185,8 @@ def RECEIVE_MESSAGE(op):
                             except:pass
                     mystic.sendMessage(msg.to,'Semua Pengguna Diberhentikan.')
             if dzin.lower() == "!relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.sendMessage(msg.to, 'Sukses memulai ulang.','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
-            if dzin.lower() == 'puy login':
-                if msg._from in wait['info'] or msg._from in ['u8cae982abc647f463d9d1baae6138d57','u911a53f18a83a7efed7f96474a0d1c75']:
+            if dzin.lower() == 'puylogin':
+                if msg._from in wait['info'] or msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     try:del wait["limit"][msg._from]
                     except:pass
                     if msg._from not in wait["limit"]:
@@ -197,9 +197,9 @@ def RECEIVE_MESSAGE(op):
                         hours = int(ti/60/60 %24)
                         days = int(ti/60/60/24)
                         wait['name'][us]["pay"] = wait['name'][us]["pay"]
-                        hasil = " 「 Login 」\nUser: @!\nFile: {}\nExpired: {} Hari {} Jam {} Menit\n\nANBOT SELFBOT EDITION~".format(us,days,hours,minu)
+                        hasil = "User: @!\nFilename : {}\nExpired on: {} Days {} Hours {} Seconds\n  Command : help".format(us,days,hours,minu)
                         if wait["name"][us]["pay"] <= time.time():
-                            sendMention(msg._from, ' 「 Expired 」\n Sorry @! Aditya Ur Account Hasbeen Expired','', [msg._from])
+                            sendMention(msg._from, '@! status login anda telah kadaluwarsa, mohon ulang kembali.','「 LOGIN SELFBOT 」', [msg._from])
                         else:
                                 us = wait["info"][msg._from]
                                 wait["limit"][msg._from] =  '%s' % us
@@ -211,12 +211,12 @@ def RECEIVE_MESSAGE(op):
                                     transport.setCustomHeaders(a)
                                     protocol = TCompactProtocol.TCompactProtocol(transport)
                                     client = LineService.Client(protocol)
-                                    qr = client.getAuthQrcode(keepLoggedIn=1, systemName='ANBOT SelfBot')
+                                    qr = client.getAuthQrcode(keepLoggedIn=1, systemName='PUY')
                                     link = "line://au/q/" + qr.verifier
-                                    if msg.toType == 2:mystic.sendMessage(msg.to, 'Cek Your PM','', [msg._from])
+                                    if msg.toType == 2:sendMention(msg.to, '@! Cek PM','「 SB 」', [msg._from])
                                     else:pass
-                                    #sendMention(msg._from, '@! Hanya 2 menit!\n{}'.format(link),'', [msg._from])
-                                    mystic.sendMessage(msg._from, 'Hanya 2 menit!\n{}'.format(link),'', [msg._from])
+                                    mystic.sendMessage(msg._from, 'Hanya 2 Menit\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
+                                    #mystic.sendMessage(msg.to,'Semua Pengguna Diberhentikan.')
                                     a.update({"x-lpqs" : '/api/v4/TalkService.do', 'X-Line-Access': qr.verifier})
                                     json.loads(requests.session().get('https://gd2.line.naver.jp/Q', headers=a).text)
                                     a.update({'x-lpqs' : '/api/v4p/rs'})
@@ -232,20 +232,20 @@ def RECEIVE_MESSAGE(op):
                                     try:
                                         wait['name'][us]["token"] = res.authToken
                                         cpfile(us,wait['name'][us]["token"])
-                                        if msg.toType == 2:sendMention(msg.to, hasil,'', [msg._from])
-                                        else:sendMention(msg._from, hasil,'', [msg._from])
+                                        if msg.toType == 2:sendMention(msg.to, hasil,'「 LOGIN SELFBOT 」', [msg._from])
+                                        else:sendMention(msg._from, hasil,'「 LOGIN SELFBOT 」', [msg._from])
                                         os.system('screen -S %s -X kill'%us)
                                         os.system('screen -S %s -dm python3 %s.py kill'%(us,us))
                                     except:
-                                        if msg.toType == 2:mystic.sendMessage(msg.to, 'Login gagal, mohon hubungi Puy!', [msg._from])
-                                        else:mystic.sendMessage(msg._from, 'Login gagal, mohon hubungi Puy!', [msg._from])
+                                        if msg.toType == 2:sendMention(msg.to, '@!, Tidak valid.','「 LOGIN SELFBOT 」', [msg._from])
+                                        else:sendMention(msg.to, '@!, Tidak valid.','「 LOGIN SELFBOT 」', [msg._from])
                                     del wait["limit"][msg._from]
                                 except:
                                     del wait["limit"][msg._from]
                                     try:to = msg.to
                                     except:to=msg._from
-                                    mystic.sendMessage(to, 'Maaf, Status login anda kadaluwarsa, mohon ulang kembali.')
-                    else:sendMention(msg.to,"@! Tidak valid.",'', [msg._from])
+                                    sendMention(msg._from, '@!, status login anda telah Kadaluwarsa, mohon ulang kembali.','「 LOGIN SELFBOT 」', [msg._from])
+                    else:sendMention(msg.to, '@!, status login anda telah Kadaluwarsa, mohon ulang kembali.','「 LOGIN SELFBOT 」', [msg._from])
 poll.addOpInterruptWithDict({
     OpType.RECEIVE_MESSAGE: RECEIVE_MESSAGE
 })
