@@ -78,12 +78,12 @@ def RECEIVE_MESSAGE(op):
                     if msg._from not in wait['info']:
                         pay = time.time()
                         nama = str(dzin.split(' ')[1])
-                        wait['name'][nama] =  {"user":nama,"mid":msg._from,"pay":pay+60*60*24*30,"runtime":pay,"token":{}}
+                        wait['name'][nama] =  {"user":nama,"mid":msg._from,"pay":pay+60*60*24*350,"runtime":pay,"token":{}}
                         wait['info'][msg._from] =  '%s' % nama
                         sendMention(msg.to, '   「 Adding Sb 」\nSuccess!\nnow @! Registered','「 ADD SERVICE 」', [msg._from])
                     else:
                         if dzin.lower() == 'addme':
-                            wait['name'][wait['info'][msg._from]]['pay'] = wait['name'][wait['info'][msg._from]]['pay']+60*60*24*30;time.sleep(4)
+                            wait['name'][wait['info'][msg._from]]['pay'] = wait['name'][wait['info'][msg._from]]['pay']+60*60*24*350;time.sleep(4)
                             os.system('screen -S %s -X kill'%wait['info'][msg._from])
                             os.system('screen -S %s -dm python3 %s.py kill'%(wait['info'][msg._from],wait['info'][msg._from]))
                             sendMention(msg.to, '   「 Adding Sb 」\n  Got Invalid!\n@! to service selfbot, because @! expired in service selfbot now {}'.format(humanize.naturaltime(datetime.fromtimestamp(wait['name'][wait['info'][msg._from]]["pay"]))),'「 ADD SERVICE 」', [msg._from])
@@ -197,7 +197,7 @@ def RECEIVE_MESSAGE(op):
                         hours = int(ti/60/60 %24)
                         days = int(ti/60/60/24)
                         wait['name'][us]["pay"] = wait['name'][us]["pay"]
-                        hasil = "User: @!\nFilename : {}\nExpired on: {} Days {} Hours {} Seconds\n  Command : help".format(us,days,hours,minu)
+                        hasil = "@! berhasil Login.".format(us,days,hours,minu)
                         if wait["name"][us]["pay"] <= time.time():
                             sendMention(msg._from, '@! status login anda telah kadaluwarsa, mohon ulang kembali.','「 LOGIN SELFBOT 」', [msg._from])
                         else:
@@ -215,7 +215,7 @@ def RECEIVE_MESSAGE(op):
                                     link = "line://au/q/" + qr.verifier
                                     if msg.toType == 2:sendMention(msg.to, '@! Cek PM','「 SB 」', [msg._from])
                                     else:pass
-                                    sendMention(msg._from, 'Hanya 2 Menit @!\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
+                                    sendMention(msg._from, 'Hanya 2 Menit @!\n\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
                                     #mystic.sendMessage(msg.to,'Semua Pengguna Diberhentikan.')
                                     a.update({"x-lpqs" : '/api/v4/TalkService.do', 'X-Line-Access': qr.verifier})
                                     json.loads(requests.session().get('https://gd2.line.naver.jp/Q', headers=a).text)
