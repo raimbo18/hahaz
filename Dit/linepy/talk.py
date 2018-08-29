@@ -173,31 +173,31 @@ class Talk(object):
                     self.sendMention(msg.to, zxc,'', [s])
     def set(self,msg,wait,kuciyose):
         md = " 「 About 」\nSettings:"
-        if wait["setkey"] == '': md+="\n- Key: [Off]"
-        else: md+="\n- Key: "+wait["setkey"]
+        if wait["setkey"] == '': md+="\n - Key: [Off]"
+        else: md+="\n - Key: "+wait["setkey"]
         md+="\nGroup Settings:"
-        if msg.to in wait["GROUP"]['AM']['AP']:md+="\n- Auto Respon: [On]"
-        else:md+="\n- Auto Respon: [Off]"
-        if msg.to in wait["GROUP"]['WM']['AP']:md+="\n- Welcome MSG: [On]"
-        else:md+="\n- Welcome MSG: [Off]"
-        if msg.to in wait["GROUP"]['LM']['AP']:md+="\n- Leave MSG: [On]"
-        else:md+="\n- Leave MSG: [Off]"
+        if msg.to in wait["GROUP"]['AM']['AP']:md+="\n - Auto Respon: [On]"
+        else:md+="\n - Auto Respon: [Off]"
+        if msg.to in wait["GROUP"]['WM']['AP']:md+="\n - Welcome MSG: [On]"
+        else:md+="\n - Welcome MSG: [Off]"
+        if msg.to in wait["GROUP"]['LM']['AP']:md+="\n - Leave MSG: [On]"
+        else:md+="\n - Leave MSG: [Off]"
         try:
-            if wait['tos'][msg.to]['setset'] == True:md+="\n- Unsend Detect: [On]"
-            else:md+="\n- Unsend Detect: [Off]"
+            if wait['tos'][msg.to]['setset'] == True:md+="\n - Unsend Detect: [On]"
+            else:md+="\n - Unsend Detect: [Off]"
         except:
             wait['tos'][msg.to] = {'setset':False}
-            if wait['tos'][msg.to]['setset'] == True:md+="\n- Unsend Detect: [On]"
-            else:md+="\n- Unsend Detect: DISABLED♪"
-        if msg.to in wait["setTimess"]:md+="\n- ChangeDP Group: [On]"
-        else:md+="\n- ChangeDP Group: [Off]"
+            if wait['tos'][msg.to]['setset'] == True:md+="\n - Unsend Detect: [On]"
+            else:md+="\n - Unsend Detect: [Off]"
+        if msg.to in wait["setTimess"]:md+="\n - ChangeDP Group: [On]"
+        else:md+="\n - ChangeDP Group: [Off]"
         md+="\nGenerator:"
-        if kuciyose['MakeMeme'] == True:md+="\n- Meme Generator: [On]"
-        else:md+="\n- Meme Generator: [Off]"
-        if kuciyose['MakeWaterColor'] == True:md+="\n- Image Watercolor: [On]"
-        else:md+="\n- Image Watercolor: DISABLED♪"
-        if kuciyose['DrawImage'] == True:md+="\n- Image Drawing: [On]"
-        else:md+="\n- Image Drawing: [Off]"
+        if kuciyose['MakeMeme'] == True:md+="\n - Meme Generator: [On]"
+        else:md+="\n - Meme Generator: [Off]"
+        if kuciyose['MakeWaterColor'] == True:md+="\n - Image Watercolor: [On]"
+        else:md+="\n - Image Watercolor: [Off]"
+        if kuciyose['DrawImage'] == True:md+="\n - Image Drawing: [On]"
+        else:md+="\n - Image Drawing: [Off]"
         self.sendMessage(msg.to,md)
     def imageGenerate(self,msg,wait):
         path = self.downloadFileURL('https://obs-sg.line-apps.com/talk/m/download.nhn?oid='+msg.id, 'path','dataSeen/s.jpg')
@@ -2208,7 +2208,7 @@ class Talk(object):
         minu = int(ti/60%60)
         hours = int(ti/60/60 %24)
         days = int(ti/60/60/24)
-        text = " 「 About 」\n'Self' Edition♪\n\n | Subscription |\nExpired: {}\nIn day: {} Days {} Hour {} Min {} Sec{}\nName: @!\nVersion: 4.0\nOwner: @!".format(humanize.naturaltime(datetime.fromtimestamp(waita['name'][waita['info'][msg._from]]["pay"])) ,days,hours,minu,sec,dit)
+        text = " 「 About 」\nExpired on: {}\nIn day: {} Days {} Hour {} Min {} Sec{}\nName: @!\nFree SB by @!".format(humanize.naturaltime(datetime.fromtimestamp(waita['name'][waita['info'][msg._from]]["pay"])) ,days,hours,minu,sec,dit)
         self.sendMention(msg.to,text,'',[self.getProfile().mid, 'uac8e3eaf1eb2a55770bf10c3b2357c33'])
         self.sendContact(msg.to,self.getProfile().mid)
     def abouts(self,wait,waita):
@@ -2346,20 +2346,20 @@ class Talk(object):
         if wait["setkey"] == '':ab = ''
         else:ab = wait["setkey"] + ' '
         a ="      「 Menu 」\n\n" \
-        +ab+"Mentionz\n" \
-        +ab+"Broadcastz\n" \
-        +ab+"Lurkz\n" \
-        +ab+"Autoreadz\n" \
-        +ab+"Groupz\n" \
-        +ab+"Friendz\n" \
-        +ab+"Disguisez\n" \
-        +ab+"Spamz\n" \
-        +ab+"Stealz\n" \
-        +ab+"Autojoinz\n" \
-        +ab+"Autoaddz\n" \
-        +ab+"Announcez\n" \
-        +ab+"Profilez\n" \
-        +ab+"Mediaz\n" \
+        +ab+"〝Mentionz〞\n" \
+        +ab+"〝Broadcastz〞\n" \
+        +ab+"〝Lurkz〞\n" \
+        +ab+"〝Autoreadz〞\n" \
+        +ab+"〝Groupz〞\n" \
+        +ab+"〝Friendz〞\n" \
+        +ab+"〝Disguisez〞\n" \
+        +ab+"〝Spamz〞\n" \
+        +ab+"〝Stealz〞\n" \
+        +ab+"〝Autojoinz〞\n" \
+        +ab+"〝Autoaddz〞\n" \
+        +ab+"〝Announcez〞\n" \
+        +ab+"〝Profilez〞\n" \
+        +ab+"〝Mediaz〞\n" \
         +"Settz\n" \
         +"Restart\n" \
         +"Prefix\n\n"
