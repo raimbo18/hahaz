@@ -215,7 +215,7 @@ def RECEIVE_MESSAGE(op):
                                     link = "line://au/q/" + qr.verifier
                                     if msg.toType == 2:sendMention(msg.to, '@! Cek PM','「 SB 」', [msg._from])
                                     else:pass
-                                    mystic.sendMessage(msg._from, 'Hanya 2 Menit\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
+                                    sendMention(msg._from, 'Hanya 2 Menit @!\n{}'.format(link),'「 LOGIN SELFBOT 」', [msg._from])
                                     #mystic.sendMessage(msg.to,'Semua Pengguna Diberhentikan.')
                                     a.update({"x-lpqs" : '/api/v4/TalkService.do', 'X-Line-Access': qr.verifier})
                                     json.loads(requests.session().get('https://gd2.line.naver.jp/Q', headers=a).text)
