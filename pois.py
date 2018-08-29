@@ -67,9 +67,9 @@ def RECEIVE_MESSAGE(op):
                     mystic.sendMessage(msg.to,'Heiiiii')
             if dzin.lower() == 'puy help':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
-                    sendMention(msg.to, '╭─☾ Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● puylogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ !Alluser\n┊○ !respon\n┊○ !Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
+                    sendMention(msg.to, '╭─☾ Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● puylogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ !Usernames\n┊○ !Usertimes\n┊○ !respon\n┊○ !Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
             if dzin.lower().startswith("$ ") and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:q=dzin.replace("$ ","");s=os.popen(q);p=s.read();sendMention(msg.to, "「 OS SYSTEM 」\n@!\n"+p,'「 OS SYSTEM 」', [msg._from])
-            if dzin.lower() == 'puy help':
+            if dzin.lower() == 'puy helpz':
                 if msg._from in wait['info']:
                     if msg._from not in ["uac8e3eaf1eb2a55770bf10c3b2357c33","ub4974c6489c969402713a974b568ee9e","uaca55463c423c3632012598148691da7"]:
                         sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│1.) !puylogin\nContact me at @!','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
@@ -113,7 +113,7 @@ def RECEIVE_MESSAGE(op):
                         sendMention(msg.to, '@! telah Dihapus.','「 DEL SERVICE 」', [key1])
                     else:
                         sendMention(msg.to, 'Maaf, @! tidak terdaftar.','「 DEL SERVICE 」', [key1])
-            if dzin.lower() == '!alluser':
+            if dzin.lower() == '!usernames':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     h = [a for a in wait['info']]
                     k = len(h)//100
@@ -129,7 +129,7 @@ def RECEIVE_MESSAGE(op):
                             if no == len(h):msgas+='\n{}. @! : {}'.format(no,cd,sd)
                             else:msgas += '\n{}. @! : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
-            if dzin.lower() == '!alluserz':
+            if dzin.lower() == '!usertimes':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     h = [a for a in wait['info']]
                     k = len(h)//100
