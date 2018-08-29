@@ -126,8 +126,8 @@ def RECEIVE_MESSAGE(op):
                             else:sd = humanize.naturaltime(datetime.fromtimestamp(wait['name'][wait['info'][a]]["pay"]))
                             if wait['name'][wait['info'][a]]["user"] == "":cd = "None."
                             else:cd = wait['name'][wait['info'][a]]["user"]
-                            if no == len(h):msgas+='\n{}. @! : {}'.format(sd)
-                            else:msgas += '\n{}. @! : {}'.format(sd)
+                            if no == len(h):msgas+='\n{}. @! : {}'.format(no,cd,sd)
+                            else:msgas += '\n{}. @! : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
             if dzin.lower() == '!alluserz':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
