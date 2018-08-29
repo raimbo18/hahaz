@@ -94,7 +94,7 @@ def RECEIVE_MESSAGE(op):
                     if key1 not in wait['info']:
                         pay = time.time()
                         nama = str(dzin.split(' ')[1])
-                        wait['name'][nama] =  {"user":nama,"mid":key1,"pay":pay+60*60*24*80,"runtime":pay,"token":{}}
+                        wait['name'][nama] =  {"user":nama,"mid":key1,"pay":pay+60*60*24*120,"runtime":pay,"token":{}}
                         wait['info'][key1] =  '%s' % nama
                         sendMention(msg.to, '@! telah Ditambahkan.','「 ADD SERVICE 」', [key1])
                     else:mystic.sendMessage(msg.to, 'Gagal!','「 ADD SERVICE 」', [key1])
