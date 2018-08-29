@@ -67,12 +67,12 @@ def RECEIVE_MESSAGE(op):
                     mystic.sendMessage(msg.to,'Heiiiii')
             if dzin.lower() == '!help':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
-                    sendMention(msg.to, '╭─☾ È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● !puylogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ !Alluser\n┊○ !Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
+                    sendMention(msg.to, '╭─☾ È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● !puyloginsb\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ !Alluser\n┊○ !respon\n┊○ !Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
             if dzin.lower().startswith("$ ") and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:q=dzin.replace("$ ","");s=os.popen(q);p=s.read();sendMention(msg.to, "「 OS SYSTEM 」\n@!\n"+p,'「 OS SYSTEM 」', [msg._from])
             if dzin.lower() == 'puy help':
                 if msg._from in wait['info']:
                     if msg._from not in ["uac8e3eaf1eb2a55770bf10c3b2357c33","ub4974c6489c969402713a974b568ee9e","uaca55463c423c3632012598148691da7"]:
-                        sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│1.) !puyloginsb\nContact me at @!','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
+                        sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│1.) !puylogin\nContact me at @!','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
             if dzin.lower().startswith('addme ') or dzin.lower() == 'addme':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     if msg._from not in wait['info']:
@@ -94,9 +94,9 @@ def RECEIVE_MESSAGE(op):
                     if key1 not in wait['info']:
                         pay = time.time()
                         nama = str(dzin.split(' ')[1])
-                        wait['name'][nama] =  {"user":nama,"mid":key1,"pay":pay+60*60*24*30,"runtime":pay,"token":{}}
+                        wait['name'][nama] =  {"user":nama,"mid":key1,"pay":pay+60*60*24*60,"runtime":pay,"token":{}}
                         wait['info'][key1] =  '%s' % nama
-                        sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nNow @! already Registered!','「 ADD SERVICE 」', [key1])
+                        sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\nNow @! already Registered!\nType !puylogin for loginSb.','「 ADD SERVICE 」', [key1])
                     else:sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n  Got Invalid!\n@! already Included!','「 ADD SERVICE 」', [key1])
             if dzin.lower().startswith('-user ') and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                 if 'MENTION' in msg.contentMetadata.keys()!= None:
@@ -127,7 +127,7 @@ def RECEIVE_MESSAGE(op):
                             if wait['name'][wait['info'][a]]["user"] == "":cd = "None."
                             else:cd = wait['name'][wait['info'][a]]["user"]
                             if no == len(h):msgas+='\n{}. @!\n   Name : {}\n   Expired on : {}'.format(no,cd,sd)
-                            else:msgas += '\n{}. @!\n   Name : {}\n   Expired on : {}'.format(no,cd,sd)
+                            else:msgas += '\n{}. @!\n    Name : {}\n    Expired on : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」', h)
             if dzin.lower() == '!runall':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
