@@ -2117,16 +2117,16 @@ class Talk(object):
                     except:pass
             if msg.text.lower() == 'respon':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
-                    self.sendMention(to,'@!','',[self.profile.mid])
+                    self.sendMention(to,'here bos @!','',[self.profile.mid])
             if msg.text.lower() == 'cleartmp':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
-                    self.sendMessage(to,'Sukses Clear TEMP MESSAGE NOW I WILL REFRESH')
+                    self.sendMessage(to,'Sukses membersihkan')
                     wait["lurkt"],wait["lurkp"],wait["ROM"],wait["ROM1"],wait["setTime"],wait["readPoint"],wait["readPoints"],wait['Unsend']={},{},{},{},{},{},{},{}
                     time.sleep(3)
-                    self.sendMessage(to,'DONE REFRESH MY SELFBOT')
+                    self.sendMessage(to,'Berhasil mengulang program')
                     self.restart_program()
             if msg.text.lower().startswith('delsb '):
-                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
+                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33','u6b7dbf1e4a04a017d2c288849f92b6d7','ude1ff58ba36c0f45a0eddb0562a7521e']:
                     mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
