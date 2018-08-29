@@ -142,6 +142,22 @@ def RECEIVE_MESSAGE(op):
                             else:sd = humanize.naturaltime(datetime.fromtimestamp(wait['name'][wait['info'][a]]["pay"]))
                             if wait['name'][wait['info'][a]]["user"] == "":cd = "None."
                             else:cd = wait['name'][wait['info'][a]]["user"]
+                            if no == len(h):msgas+='\n{}. @! : {}'.format(no,sd)
+                            else:msgas += '\n{}. @! : {}'.format(no,sd)
+                        sendMention(msg.to, msgas,'   「 User Sb List 」', h)
+            if dzin.lower() == '!userlist':
+                if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+                    h = [a for a in wait['info']]
+                    k = len(h)//100
+                    for aa in range(k+1):
+                        msgas = '   「 Service List 」'
+                        no=0
+                        for a in h:
+                            no+=1
+                            if wait['name'][wait['info'][a]]["pay"] <= time.time():sd = 'Expired'
+                            else:sd = humanize.naturaltime(datetime.fromtimestamp(wait['name'][wait['info'][a]]["pay"]))
+                            if wait['name'][wait['info'][a]]["user"] == "":cd = "None."
+                            else:cd = wait['name'][wait['info'][a]]["user"]
                             if no == len(h):msgas+='\n{}. @!\n   Name : {}\n   Expired on : {}'.format(no,cd,sd)
                             else:msgas += '\n{}. @!\n    Name : {}\n    Expired on : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
