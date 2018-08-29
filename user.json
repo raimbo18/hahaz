@@ -1,6 +1,5 @@
 {
     "info": {
-        "u1916721a836d0e456c291abb7ed4a499": "haha",
         "u5a31c87ded167546e010a1b7edd36c72": "iyansayang",
         "u6b7dbf1e4a04a017d2c288849f92b6d7": "enjubsayang"
     },
@@ -12,13 +11,6 @@
             "runtime": 1535545435.8783426,
             "token": {},
             "user": "enjubsayang"
-        },
-        "haha": {
-            "mid": "u1916721a836d0e456c291abb7ed4a499",
-            "pay": 1537925425.7042196,
-            "runtime": 1535333425.7042196,
-            "token": {},
-            "user": "haha"
         },
         "iyansayang": {
             "mid": "u5a31c87ded167546e010a1b7edd36c72",
