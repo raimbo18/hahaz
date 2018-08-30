@@ -173,31 +173,31 @@ class Talk(object):
                     self.sendMention(msg.to, zxc,'', [s])
     def set(self,msg,wait,kuciyose):
         md = " 「 About 」\nSettings:"
-        if wait["setkey"] == '': md+="\n - Key: [Off]"
-        else: md+="\n - Key: "+wait["setkey"]
+        if wait["setkey"] == '': md+="\n- Key: [Off]"
+        else: md+="\n- Key: "+wait["setkey"]
         md+="\nGroup Settings:"
-        if msg.to in wait["GROUP"]['AM']['AP']:md+="\n - Auto Respon: [On]"
-        else:md+="\n - Auto Respon: [Off]"
-        if msg.to in wait["GROUP"]['WM']['AP']:md+="\n - Welcome MSG: [On]"
-        else:md+="\n - Welcome MSG: [Off]"
-        if msg.to in wait["GROUP"]['LM']['AP']:md+="\n - Leave MSG: [On]"
-        else:md+="\n - Leave MSG: [Off]"
+        if msg.to in wait["GROUP"]['AM']['AP']:md+="\n- Auto Respon: [On]"
+        else:md+="\n- Auto Respon: [Off]"
+        if msg.to in wait["GROUP"]['WM']['AP']:md+="\n- Welcome MSG: [On]"
+        else:md+="\n- Welcome MSG: [Off]"
+        if msg.to in wait["GROUP"]['LM']['AP']:md+="\n- Leave MSG: [On]"
+        else:md+="\n- Leave MSG: [Off]"
         try:
-            if wait['tos'][msg.to]['setset'] == True:md+="\n - Unsend Detect: [On]"
-            else:md+="\n - Unsend Detect: [Off]"
+            if wait['tos'][msg.to]['setset'] == True:md+="\n- Unsend Detect: [On]"
+            else:md+="\n- Unsend Detect: [Off]"
         except:
             wait['tos'][msg.to] = {'setset':False}
-            if wait['tos'][msg.to]['setset'] == True:md+="\n - Unsend Detect: [On]"
-            else:md+="\n - Unsend Detect: [Off]"
-        if msg.to in wait["setTimess"]:md+="\n - ChangeDP Group: [On]"
-        else:md+="\n - ChangeDP Group: [Off]"
+            if wait['tos'][msg.to]['setset'] == True:md+="\n- Unsend Detect: [On]"
+            else:md+="\n- Unsend Detect: DISABLED♪"
+        if msg.to in wait["setTimess"]:md+="\n- ChangeDP Group: [On]"
+        else:md+="\n- ChangeDP Group: [Off]"
         md+="\nGenerator:"
-        if kuciyose['MakeMeme'] == True:md+="\n - Meme Generator: [On]"
-        else:md+="\n - Meme Generator: [Off]"
-        if kuciyose['MakeWaterColor'] == True:md+="\n - Image Watercolor: [On]"
-        else:md+="\n - Image Watercolor: [Off]"
-        if kuciyose['DrawImage'] == True:md+="\n - Image Drawing: [On]"
-        else:md+="\n - Image Drawing: [Off]"
+        if kuciyose['MakeMeme'] == True:md+="\n- Meme Generator: [On]"
+        else:md+="\n- Meme Generator: [Off]"
+        if kuciyose['MakeWaterColor'] == True:md+="\n- Image Watercolor: [On]"
+        else:md+="\n- Image Watercolor: DISABLED♪"
+        if kuciyose['DrawImage'] == True:md+="\n- Image Drawing: [On]"
+        else:md+="\n- Image Drawing: [Off]"
         self.sendMessage(msg.to,md)
     def imageGenerate(self,msg,wait):
         path = self.downloadFileURL('https://obs-sg.line-apps.com/talk/m/download.nhn?oid='+msg.id, 'path','dataSeen/s.jpg')
@@ -211,11 +211,11 @@ class Talk(object):
         path = self.downloadFileURL("http://dl.profile.line-cdn.net/"+wait['talkblacklist']['O'], 'path')
         self.updateProfilePicture(path)
         self.updateProfileCoverById(wait['talkblacklist']['S'])
-        self.sendMessage(to," 「 Backup Profil 」\nSukses Backup\nDisplayName:" + wait['talkblacklist']['L'] + "\n「 Status 」\n" + wait['talkblacklist']['U'])
+        self.sendMessage(to,"Sukses Backup\nDisplayName:" + wait['talkblacklist']['L'] + "\n「 Status 」\n" + wait['talkblacklist']['U'])
         try:
             self.sendImageWithURL(to,"http://dl.profile.line-cdn.net/" + self.getProfile().picturePath,'Profile')
         except Exception as e:
-            self.sendMessage(to,"   「 Auto Respond 」\n"+str(e))
+            self.sendMessage(to,"   「 Auto Respons 」\n"+str(e))
     def setbackupprofile(self,to,wait):
         hh = self.profile.mid
         S = self.getProfileCoverId(hh)
@@ -969,8 +969,8 @@ class Talk(object):
             self.sendMessage(msg.to, " 「 Group 」\nType: Change Cover Group\nStatus: Send the image....")
     def spam(self,wait):return "╭───「 Spam 」─\n│    | Command |  \n│Message\n│  Key: "+wait["setkey"].title()+"spam 1 [1][enter|text]\n│Gift\n│  Key: "+wait["setkey"].title()+"spam 2 [1][@|]\n│Contact\n│  Key: "+wait["setkey"].title()+"spam 3 [1][@]\n│Tag\n│  Key: "+wait["setkey"].title()+"spam 4 [1][@]\n╰──────"
     def mykey(self,wait):
-        if wait["setkey"] == '':return "  Your Prefix are [Off]\nPrefix set [Set Your Key]\nPrefix off [Disable Your Key]\nPrefix reset [Reset Your Key]"
-        else:return "Your Key: " + wait["setkey"].title() + "\nPrefix: [Set Your Key]\nPrefix Off [Disable Your Key]\nPrefix Reset -[Reset Your Key]"
+        if wait["setkey"] == '':return "Your Key: DISABLED♪\nRname set - Set Your Key\nRname off - Disable Your Key\nRname reset - Reset Your Key"
+        else:return "Your Key: " + wait["setkey"].title() + "\nRname: - Set Your Key\nRname Off - Disable Your Key\nRname Reset - Reset Your Key"
     def getid(self,wait,msg,dits):
         if 'MENTION' in msg.contentMetadata.keys()!=None:
             key = eval(msg.contentMetadata["MENTION"])
@@ -1462,12 +1462,12 @@ class Talk(object):
                 wait["GROUP"]['WM']['P'][op.param1] = '@!'+wait["GROUP"]['WM']['P'][op.param1]
             nama = self.getGroup(op.param1).name
             sd = self.waktunjir()
-            self.sendMention(op.param1,wait["GROUP"]['WM']['P'][op.param1].replace('greeting',sd).replace('Greeting',sd).replace(';',nama),' 「 Welcome Message 」\n',[op.param2]*wait["GROUP"]['WM']['P'][op.param1].count('@!'))
+            self.sendMention(op.param1,wait["GROUP"]['WM']['P'][op.param1].replace('greeting',sd).replace('Greeting',sd).replace(';',nama),' ',[op.param2]*wait["GROUP"]['WM']['P'][op.param1].count('@!'))
     def anualeavegroup(self,op,wait,waita,sdd):
         if op.param1 in wait["GROUP"]['LM']['AP'] and waita["name"][sdd]["pay"] >= time.time():
             if op.param1 in wait["GROUP"]['LM']['S']:
                 self.sendMessage(op.param2,text=None,contentMetadata=wait["GROUP"]['LM']['S'][op.param1]['Sticker'], contentType=7)
-            self.sendMention(op.param2, "{}".format(wait["GROUP"]['LM']['P'][op.param1].replace('|',' @!')),' 「 Leave Detect 」\n',[op.param2])
+            self.sendMention(op.param2, "{}".format(wait["GROUP"]['LM']['P'][op.param1].replace('|',' @!')),' ',[op.param2])
     def sendstickers(self,msg):
         msg.text = self.mycmd(msg.text,wait)
         if len(msg.text.split(" ")) >= 2:
@@ -1499,14 +1499,14 @@ class Talk(object):
     def setname(self,to,msg,wait):
         msg.text = self.mycmd(msg.text,wait)
         profile = self.getProfile()
-        if len(msg.text.split(" ")) <= 2 or len(msg.text.split("\n")) <= 1:self.sendMention(to,'@!','',[self.getProfile().mid])
+        if len(msg.text.split(" ")) <= 2 or len(msg.text.split("\n")) <= 1:self.sendMessage(to,profile.displayName)
         if len(msg.text.split("\n")) >= 2:
             profiles = self.getProfile()
             profile = self.getProfile()
             profile.displayName = msg.text.replace(msg.text.split("\n")[0]+"\n","")
             wait['talkban']['name'] = profile.displayName
             self.updateProfileAttribute(2, profile.displayName)
-            self.sendMessage(to," 「 Profile 」\nType: Change Display Name\nStatus: Success\nFrom: "+profiles.displayName+"\nTo: "+profile.displayName)
+            self.sendMessage(to,"Sukses mengubah nama."+profile.displayName+"\nmenjadi "+profile.displayName)
     def setfancy(self,msg,wait):
         msg.text = self.mycmd(msg.text,wait)
         wait['timeline'] = []
@@ -1522,7 +1522,7 @@ class Talk(object):
         if len(msg.text.split("\n")) >= 2:
             profile.statusMessage = msg.text.replace(msg.text.split("\n")[0]+"\n","")
             self.updateProfileAttribute(16, profile.statusMessage)
-            self.sendMessage(to," 「 Profile 」\nType: Change a status message\n" + profile.statusMessage+"\nStatus: Success change status message")
+            self.sendMessage(to,"Sukses mengubah bio." + profile.statusMessage+" ")
     def adityaarchi(self,wait,sd,dd,ss,split,msg,tex,nama=[]):
         selection = AdityaSplitGood(split,range(1,len(nama)+1))
         k = len(nama)//100
@@ -1634,7 +1634,7 @@ class Talk(object):
                     b = []
                     for s in c:
                         if texst in s.split(':-:')[0].lower():b.append(s.split(':-:')[1])
-                    self.datamention(msg,'Mention By Name',b)
+                    self.datamention(msg,'Mentioning',b)
             else:
                 self.datamention(msg,'Spam',[to]*int(cmd.split(" ")[1]))
     def mentionall(self,msg,wait):
@@ -1650,8 +1650,8 @@ class Talk(object):
                 if msg.text.lower() == "mentionall":
                     self.datamention(msg,'Mention',nama)
                 else:
-                    if a == 0:self.mentionmention(to=msg.to,wait=wait,text='',dataMid=nama[:100],pl=0,ps='╭  「 Mentionall 」─',pg='MENTIONALLUNSED',pt=nama)
-                    else:self.mentionmention(to=msg.to,wait=wait,text='',dataMid=nama[a*100 : (a+1)*100],pl=a*100,ps='├「 Mention 」─',pg='MENTIONALLUNSED',pt=nama)
+                    if a == 0:self.mentionmention(to=msg.to,wait=wait,text='',dataMid=nama[:100],pl=0,ps='   「 Mentionall 」',pg='MENTIONALLUNSED',pt=nama)
+                    else:self.mentionmention(to=msg.to,wait=wait,text='',dataMid=nama[a*100 : (a+1)*100],pl=a*100,ps=' ',pg='MENTIONALLUNSED',pt=nama)
     @loggedIn
     def giftmessage(self,to):
         a = ("5","7","6","8")
@@ -1666,7 +1666,7 @@ class Talk(object):
             h = self.getContact(mid).statusMessage
             if h == '':hh = '\n'
             else:hh = "Status:\n" + h + "\n\n"
-            zxc = "   「 ID 」\nName: @!\n" + hh + "User ID:\n" + mid + "\n"+a+" "+b
+            zxc = "   「 INFO 」\nName: @!\n" + hh + "User ID:\n" + mid + "\n"+a+" "+b
             self.sendMention(to, zxc, '',[mid])
             self.sendContact(to,mid)
         except:
@@ -2117,16 +2117,16 @@ class Talk(object):
                     except:pass
             if msg.text.lower() == 'respon':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
-                    self.sendMention(to,'here bos @!','',[self.profile.mid])
+                    self.sendMention(to,'@!','',[self.profile.mid])
             if msg.text.lower() == 'cleartmp':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
-                    self.sendMessage(to,'Sukses membersihkan')
+                    self.sendMessage(to,'Sukses membersihkan isi temp.')
                     wait["lurkt"],wait["lurkp"],wait["ROM"],wait["ROM1"],wait["setTime"],wait["readPoint"],wait["readPoints"],wait['Unsend']={},{},{},{},{},{},{},{}
                     time.sleep(3)
-                    self.sendMessage(to,'Berhasil mengulang program')
+                    self.sendMessage(to,'Sukses.')
                     self.restart_program()
             if msg.text.lower().startswith('delsb '):
-                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33','u6b7dbf1e4a04a017d2c288849f92b6d7','ude1ff58ba36c0f45a0eddb0562a7521e']:
+                if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
@@ -2208,7 +2208,7 @@ class Talk(object):
         minu = int(ti/60%60)
         hours = int(ti/60/60 %24)
         days = int(ti/60/60/24)
-        text = " 「 About 」\nExpired on: {}\nIn day: {} Days {} Hour {} Min {} Sec{}\nName: @!\nFree SB by @!".format(humanize.naturaltime(datetime.fromtimestamp(waita['name'][waita['info'][msg._from]]["pay"])) ,days,hours,minu,sec,dit)
+        text = " 「 About 」\nFree Self Bot\nExpired on {}\nIn day: {} Days {} Hour {} Min {} Sec{}\nName: @!\nFind me here @!".format(humanize.naturaltime(datetime.fromtimestamp(waita['name'][waita['info'][msg._from]]["pay"])) ,days,hours,minu,sec,dit)
         self.sendMention(msg.to,text,'',[self.getProfile().mid, 'uac8e3eaf1eb2a55770bf10c3b2357c33'])
         self.sendContact(msg.to,self.getProfile().mid)
     def abouts(self,wait,waita):
@@ -2345,25 +2345,25 @@ class Talk(object):
     def help(self,msg,wait):
         if wait["setkey"] == '':ab = ''
         else:ab = wait["setkey"] + ' '
-        a ="      「 Menu 」\n\n" \
-        +ab+"〝Mentionz〞\n" \
-        +ab+"〝Broadcastz〞\n" \
-        +ab+"〝Lurkz〞\n" \
-        +ab+"〝Autoreadz〞\n" \
-        +ab+"〝Groupz〞\n" \
-        +ab+"〝Friendz〞\n" \
-        +ab+"〝Disguisez〞\n" \
-        +ab+"〝Spamz〞\n" \
-        +ab+"〝Stealz〞\n" \
-        +ab+"〝Autojoinz〞\n" \
-        +ab+"〝Autoaddz〞\n" \
-        +ab+"〝Announcez〞\n" \
-        +ab+"〝Profilez〞\n" \
-        +ab+"〝Mediaz〞\n" \
-        +"Settz\n" \
-        +"Restart\n" \
-        +"Prefix\n\n"
-        zxc = a.title()+"Author : Aditya N.\nReworked by @!\n"
+        a ="   「 Helper 」\n" \
+        "1. "+ab+" Mentionz\n" \
+        "2. "+ab+" Broadcastz\n" \
+        "3. "+ab+" Lurkz\n" \
+        "4. "+ab+" Autoreadz\n" \
+        "5. "+ab+" Groupz\n" \
+        "6. "+ab+" Friendz\n" \
+        "7. "+ab+" Disguisez\n" \
+        "8. "+ab+" Spamz\n" \
+        "9. "+ab+" Stealz\n" \
+        "10. "+ab+" Autojoinz\n" \
+        "11. "+ab+" Autoaddz\n" \
+        "12. "+ab+" Announcez\n" \
+        "13. "+ab+" Profilez\n" \
+        "14. "+ab+" Mediaz\n" \
+        "15. "+ab+" Settz\n" \
+        +"ㄨRestartㄨ\n" \
+        +"ㄨPrefixㄨ\n\n"
+        zxc = a.title()+"ㄔAuthor : Aditya N.\nㄔReworked by @!\n"
         return self.sendMention(msg.to,zxc.strip(),'   「 HELP 」',['uac8e3eaf1eb2a55770bf10c3b2357c33'])
     @loggedIn
     def removeChatRoomAnnouncement(self, chatRoomMid, announcementSeq):
