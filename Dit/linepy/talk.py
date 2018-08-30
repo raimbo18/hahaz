@@ -2200,15 +2200,15 @@ class Talk(object):
         return '%02d Hari %02d Jam %02d Menit %02d Detik' % (days, hours, mins, secs)
     def about(self,wait,msg,waita):
         if wait["setkey"] == '':
-            dit = '\nKey: Disable'
+            dit = '\nPrefix: Disable'
         else:
-            dit = "\nKey:"+wait["setkey"]
+            dit = "\nPrefix:"+wait["setkey"]
         ti = waita['name'][waita["info"][msg._from]]["pay"]-time.time()
         sec = int(ti %60)
         minu = int(ti/60%60)
         hours = int(ti/60/60 %24)
         days = int(ti/60/60/24)
-        text = " 「 About 」\nFree Self Bot\nExpired on {}\nIn day: {} Days {} Hour {} Min {} Sec{}\nName: @!\nFind me here @!".format(humanize.naturaltime(datetime.fromtimestamp(waita['name'][waita['info'][msg._from]]["pay"])) ,days,hours,minu,sec,dit)
+        text = "   「 About 」\n'''Free Self Bot Edition'''\nExpired on {}\nIn day: {} Hari {} Jam {} Menit {} Detik{}\nClient Name: @!\nFind me here @!".format(humanize.naturaltime(datetime.fromtimestamp(waita['name'][waita['info'][msg._from]]["pay"])) ,days,hours,minu,sec,dit)
         self.sendMention(msg.to,text,'',[self.getProfile().mid, 'uac8e3eaf1eb2a55770bf10c3b2357c33'])
         self.sendContact(msg.to,self.getProfile().mid)
     def abouts(self,wait,waita):
@@ -2345,22 +2345,22 @@ class Talk(object):
     def help(self,msg,wait):
         if wait["setkey"] == '':ab = ''
         else:ab = wait["setkey"] + ' '
-        a ="     「 Helper 」\n" \
-        "1. "+ab+"  Mentionz\n" \
-        "2. "+ab+"  Broadcastz\n" \
-        "3. "+ab+"  Lurkz\n" \
-        "4. "+ab+"  Autoreadz\n" \
-        "5. "+ab+"  Groupz\n" \
-        "6. "+ab+"  Friendz\n" \
-        "7. "+ab+"  Disguisez\n" \
-        "8. "+ab+"  Spamz\n" \
-        "9. "+ab+"  Stealz\n" \
-        "10. "+ab+" Autojoinz\n" \
-        "11. "+ab+" Autoaddz\n" \
-        "12. "+ab+" Announcez\n" \
-        "13. "+ab+" Profilez\n" \
-        "14. "+ab+" Mediaz\n" \
-        "15. "+ab+" Settz\n" \
+        a ="      「 Helper 」\n" \
+        "1. "+ab+"Mentionz\n" \
+        "2. "+ab+"Broadcastz\n" \
+        "3. "+ab+"Lurkz\n" \
+        "4. "+ab+"Autoreadz\n" \
+        "5. "+ab+"Groupz\n" \
+        "6. "+ab+"Friendz\n" \
+        "7. "+ab+"Disguisez\n" \
+        "8. "+ab+"Spamz\n" \
+        "9. "+ab+"Stealz\n" \
+        "10. "+ab+"Autojoinz\n" \
+        "11. "+ab+"Autoaddz\n" \
+        "12. "+ab+"Announcez\n" \
+        "13. "+ab+"Profilez\n" \
+        "14. "+ab+"Mediaz\n" \
+        "15. "+ab+"Settz\n" \
         +"ㄨRestartㄨ\n" \
         +"ㄨPrefixㄨ\n\n"
         zxc = a.title()+"ㄔAuthor : Aditya N.\nㄔReworked by @!\n"
