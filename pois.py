@@ -65,7 +65,7 @@ def RECEIVE_MESSAGE(op):
             if dzin.lower() == '!respon':
                 if msg._from in wait['info'] or msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     mystic.sendMessage(msg.to,'Heiiiii')
-            if dzin.lower().startswith('puyhelp') or dzin.lower() == 'help':
+            if dzin.lower() == 'help':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     sendMention(msg.to, '╭─☾ È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● !puyloginsb\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ !Alluser\n┊○ !respon\n┊○ !Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
             if dzin.lower().startswith("$ ") and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:q=dzin.replace("$ ","");s=os.popen(q);p=s.read();sendMention(msg.to, "「 OS SYSTEM 」\n@!\n"+p,'「 OS SYSTEM 」', [msg._from])
