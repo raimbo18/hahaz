@@ -172,10 +172,10 @@ class Talk(object):
                     s=msg.contentMetadata["mid"];a = self.getContact(s);zxc = " 「 Contact 」\nName: @!\n\nMid: "+s+"\n\nStatus Message:\n"+a.statusMessage 
                     self.sendMention(msg.to, zxc,'', [s])
     def set(self,msg,wait,kuciyose):
-        md = " 「 About 」\nSettings:"
+        md = "     「 About 」\nSettings:"
         if wait["setkey"] == '': md+="\n- Key: [Off]"
         else: md+="\n- Key: "+wait["setkey"]
-        md+="\nGroup Settings:"
+        md+="\n\nGroup Settings:"
         if msg.to in wait["GROUP"]['AM']['AP']:md+="\n- Auto Respon: [On]"
         else:md+="\n- Auto Respon: [Off]"
         if msg.to in wait["GROUP"]['WM']['AP']:md+="\n- Welcome MSG: [On]"
@@ -191,11 +191,11 @@ class Talk(object):
             else:md+="\n- Unsend Detect: DISABLED♪"
         if msg.to in wait["setTimess"]:md+="\n- ChangeDP Group: [On]"
         else:md+="\n- ChangeDP Group: [Off]"
-        md+="\nGenerator:"
+        md+="\n\nGenerator:"
         if kuciyose['MakeMeme'] == True:md+="\n- Meme Generator: [On]"
         else:md+="\n- Meme Generator: [Off]"
         if kuciyose['MakeWaterColor'] == True:md+="\n- Image Watercolor: [On]"
-        else:md+="\n- Image Watercolor: DISABLED♪"
+        else:md+="\n- Image Watercolor: [Off]"
         if kuciyose['DrawImage'] == True:md+="\n- Image Drawing: [On]"
         else:md+="\n- Image Drawing: [Off]"
         self.sendMessage(msg.to,md)
@@ -969,8 +969,8 @@ class Talk(object):
             self.sendMessage(msg.to, " 「 Group 」\nType: Change Cover Group\nStatus: Send the image....")
     def spam(self,wait):return "╭───「 Spam 」─\n│    | Command |  \n│Message\n│  Key: "+wait["setkey"].title()+"spam 1 [1][enter|text]\n│Gift\n│  Key: "+wait["setkey"].title()+"spam 2 [1][@|]\n│Contact\n│  Key: "+wait["setkey"].title()+"spam 3 [1][@]\n│Tag\n│  Key: "+wait["setkey"].title()+"spam 4 [1][@]\n╰──────"
     def mykey(self,wait):
-        if wait["setkey"] == '':return "Your Key: DISABLED♪\nRname set - Set Your Key\nRname off - Disable Your Key\nRname reset - Reset Your Key"
-        else:return "Your Key: " + wait["setkey"].title() + "\nRname: - Set Your Key\nRname Off - Disable Your Key\nRname Reset - Reset Your Key"
+        if wait["setkey"] == '':return "Your Prefix : [On]\nPrefix change - [query]\nPrefix off - Disable\nPrefix Reset - Reset the Prefix"
+        else:return "Your Prefix : " + wait["setkey"].title() + "\nReprefix: - [query]\nPrefix Off - Disable\nPrefix Reset - Reset the Prefix"
     def getid(self,wait,msg,dits):
         if 'MENTION' in msg.contentMetadata.keys()!=None:
             key = eval(msg.contentMetadata["MENTION"])
@@ -1326,49 +1326,49 @@ class Talk(object):
         msg.text = self.mycmd(msg.text,wait)
         if len(msg.text.split("\n")) >= 2:
             wait["autoaddpesan"] = msg.text.replace(msg.text.split("\n")[0]+"\n","").replace('|','@!')
-            self.sendMessage(msg.to,"   「 Auto Add 」\nAuto add message has been set to:\n" + wait["autoaddpesan"])
+            self.sendMessage(msg.to,"Pesan Auto add diterapkan menjadi :\n" + wait["autoaddpesan"])
     def autoaddoff(self,wait):
         if wait['autoAdd'] == False:
-            msgs="   「 Auto Add 」\nAuto Add already DISABLED♪\nNote: Auto add message is not affected♪"
+            msgs="Auto Add already [Off]"
         else:
-            msgs="   「 Auto Add 」\nAuto Add set to DISABLED♪\nNote: Auto add message is not affected♪"
+            msgs="AutoAdd set to [Off]"
             wait['autoAdd']=False
         return msgs
     def autoaddon(self,wait):
         if wait['autoAdd'] == True:
-            msgs="   「 Auto Add 」\nAuto Add already Enable♪\nNote: Auto add message is not affected♪"
+            msgs="Auto Add already [On]."
         else:
-            msgs="   「 Auto Add 」\nAuto Add set to Enable♪\nNote: Auto add message is not affected♪"
+            msgs="Auto Add set to [On]."
             wait['autoAdd']=True
         return msgs
     def autoresponoff(self,wait,msg):
         if msg.to not in wait["GROUP"]['AR']['AP']:
-            msgs="   「 Auto Respon 」\nAuto Respon already DISABLED♪"
+            msgs="Auto Respon already [Off]"
         else:
-            msgs="   「 Auto Respon 」\nAuto Respon set to DISABLED♪"
+            msgs="Auto Respon set to [Off]"
             wait["GROUP"]['AR']['AP'].remove(msg.to)
         return msgs
     def autoresponmsgclear(self,wait,msg):
         autorespon = wait["GROUP"]['AR']['P'][msg.to]
-        msgs="   「 Auto Respon 」\nAuto Respon DISABLED♪\nMessage backup:"
+        msgs="Auto Respon [Off]\nMessage backup:"
         msgs+="\n" + autorespon
         wait["GROUP"]['AR']['P'][msg.to] = ""
         return msgs
     def autoresponon(self,wait,msg):
         if msg.to in wait["GROUP"]['AR']['AP']:
-            msgs="   「 Auto Respon 」\nAuto Respon already ENABLED♪"
+            msgs="Auto Respon already [On]"
         else:
-            msgs="   「 Auto Respon 」\nAuto Respon set to ENABLED♪"
+            msgs="Auto Respon set to [On]"
             wait["GROUP"]['AR']['AP'].append(msg.to)
         return msgs
     def autoresponmsgset(self,wait,msg):
         msg.text = self.mycmd(msg.text,wait)
         if len(msg.text.split("\n")) >= 2:
             wait["GROUP"]['AR']['P'][msg.to] = msg.text.replace(msg.text.split("\n")[0]+"\n","")
-            self.sendMessage(msg.to," 「 Auto Respon 」\nAuto Respon message has been set to:\n" + wait["GROUP"]['AR']['P'][msg.to])
+            self.sendMessage(msg.to,"Pesan Auto Respon diterapkan menjadi :\n" + wait["GROUP"]['AR']['P'][msg.to])
     def autorespon(self,wait,msg):
         if msg.to in wait["GROUP"]['AR']['AP']:
-            msgs="   「 Auto Respon 」\nAuto Respon: ON♪"
+            msgs="Auto Respon: [On]"
             if msg.to in wait["GROUP"]['AR']['S']:
                 a = self.shop.getProduct(packageID=int(wait["GROUP"]['AR']['S'][msg.to]['Sticker']['STKPKGID']), language='ID', country='ID')
                 msgs+="\nSticker: " + a.title
@@ -1378,7 +1378,7 @@ class Talk(object):
                 else:msgs+="\nMessage: \n" + wait["GROUP"]['AR']['P'][msg.to] + "\n"
             else:msgs+=''
         else:
-            msgs="   「 Auto Respon 」\nAuto Respon: OFF"
+            msgs="Auto Respon: [Off]"
             if msg.to in wait["GROUP"]['AR']['S']:
                 a = self.shop.getProduct(packageID=int(wait["GROUP"]['AR']['S'][msg.to]['Sticker']['STKPKGID']), language='ID', country='ID')
                 msgs+="\nSticker: " + a.title
@@ -1387,10 +1387,10 @@ class Talk(object):
                 if wait["GROUP"]['AR']['P'][msg.to] == '':msgs+= ''
                 else:msgs+="\nMessage: \n" + wait["GROUP"]['AR']['P'][msg.to] + "\n"
             else:msgs+=''
-        return msgs+"\n  |Command|\n- AutoRespon Set\n   Usage:"+wait["setkey"].title()+" autorespon [on|off]\n- AutoRespon Sticker\n   Usage:"+wait["setkey"].title()+" add stickerauto respon\n- autorespon msg setting\n   Usage:"+wait["setkey"].title()+" autorespon msg set <text>\n   OR:"+wait["setkey"].title()+" autorespon msg set <text|text>"
+        return msgs+"\n- AutoRespon Set\n   Usage:"+wait["setkey"].title()+" autorespon [on|off]\n- AutoRespon Sticker\n   Usage:"+wait["setkey"].title()+" add stickerauto respon\n- autorespon msg setting\n   Usage:"+wait["setkey"].title()+" autorespon msg set <text>\n   OR:"+wait["setkey"].title()+" autorespon msg set <text|text>"
     def autoaddmsgclear(self,wait):
         autoadd = wait["autoaddpesan"]
-        msgs=" 「 Auto Add 」\nAuto add message DISABLED♪\nMessage backup:"
+        msgs="Pesan Auto add [Off]\nMessage backup:"
         msgs+="\n" + autoadd
         wait["autoaddpesan"] = ""
         return msgs
@@ -1399,16 +1399,16 @@ class Talk(object):
         wait['talkban'] = {'time':time.time(),'timer':int(self.adityasplittext(msg.text.lower(),'s')),'cvp':False,'video':'','pict':''}
         if 'name' not in wait['talkban']:wait['talkban']['name'] = sdg
         if wait['ChangeCover'] == True:
-            msgs="   「 Fancy Name 」\nFancy Name already ENABLED With Timer {}sec".format(wait['talkban']['timer'])
+            msgs="Fancy Name already [On] With Timer {}secs".format(wait['talkban']['timer'])
         else:
-            msgs="   「 Fancy Name 」\nFancy Name set to ENABLED With Timer {}sec".format(wait['talkban']['timer'])
+            msgs="Fancy Name set to [On] With Timer {}secs".format(wait['talkban']['timer'])
             wait['ChangeCover']=True
         return msgs
     def fancynameoff(self,wait):
         if wait['ChangeCover'] == False:
-            msgs="   「 Fancy Name 」\nFancy Name already DISABLE"
+            msgs="Fancy Name already [Off]"
         else:
-            msgs="   「 Fancy Name 」\nFancy Name set to DISABLE"
+            msgs="Fancy Name set to [Off]"
             wait['ChangeCover']=False
             wait['talkban'] = {'time':time.time(),'timer':wait['talkban']['timer'],'cvp':False,'video':'','pict':'','name':wait['talkban']['name']}
             self.updateProfileAttribute(2, wait['talkban']['name'])
@@ -1416,15 +1416,15 @@ class Talk(object):
     def autoadd(self,wait):
         if wait['autoAdd'] == True:
             if wait["autoaddpesan"] == '':
-                msgs="   「 Auto Add 」\nAdd Back: True♪\nAdd Message: False♪\n\n\n"
+                msgs="Add Back: [On]\nAdd Message: [Off]\n\n\n"
             else:
-                msgs="   「 Auto Add 」\nAdd Back: True♪\nAdd Message: True♪"
+                msgs="Add Back: [On]\nAdd Message: [On]"
                 msgs+="\n" + wait['autoaddpesan'] + "\n\n"
         else:
             if wait["autoaddpesan"] == '':
-                msgs="   「 Auto Add 」\nAdd Back: False♪\nAdd Message: False♪\n\n\n"
+                msgs="   「 Auto Add 」\nAdd Back: [Off]\nAdd Message: False♪\n\n\n"
             else:
-                msgs="   「 Auto Add 」\nAdd Back: False♪\nAdd Message: True♪"
+                msgs="   「 Auto Add 」\nAdd Back: [Off]\nAdd Message: [On]"
                 msgs+="\n" + wait['autoaddpesan'] + "\n"
         return msgs+"\n  |Command|\n- Autoadd friend\n   Usage:"+wait["setkey"].title()+" autoadd [on|off]\n- Autoadd msg setting\n   Usage:"+wait["setkey"].title()+" autoadd msg set <text>\n   OR:"+wait["setkey"].title()+" autoadd msg set <text|text>"
     def anugrupinvitti(self,op,wait,waita,sdd):
@@ -1511,7 +1511,7 @@ class Talk(object):
         msg.text = self.mycmd(msg.text,wait)
         wait['timeline'] = []
         wait['timeline'] = msg.text.split("\n")[1:]
-        d = '   「 Fancy Name 」\nFancy Name Set to:'
+        d = 'Fancy Name Set to:'
         for a in wait['timeline']:
             d+= '\n{}'.format(a)
         self.sendMessage(msg.to,'{}'.format(d))
@@ -1697,7 +1697,7 @@ class Talk(object):
             for a in data['stickers']:
                 b = str(a['id'])
                 self.sendImageWithURL(to,'https://stickershop.line-scdn.net/stickershop/v1/sticker/'+b+'/ANDROID/sticker.png')
-    def mentions(self,wait):a=wait["setkey"].title();return "╭「 Mention 」─\n│    | Command |  \n│Mention By Num\n│ Key: "+a+"mention [num|>|<|1-5]\n│Mention By Name\n│ Key: "+a+"mentionsort [A-z]\n│ Key: "+a+"mentionname [A-z]\n│Spam Mention\n│ Key: "+a+"mention [2|@]\n│Mentionall Member\n╰ Key: "+a+"mentionall"
+    def mentions(self,wait):a=wait["setkey"].title();return "    「 Mention 」\nMention By Number\n Command: "+a+"mention [1-5]\nMention By Name\n Command: "+a+"mentionsort [A-z]\n Command: "+a+"mentionname [A-z]\nSpam Mention\n Command: "+a+"mention [2|@]\nMentionall Member\n Command: "+a+"mentionall"
     
     def keluarinmanteman(self,msg,wait,sas):
         if msg.text.lower() == 'bye':
@@ -2345,16 +2345,16 @@ class Talk(object):
     def help(self,msg,wait):
         if wait["setkey"] == '':ab = ''
         else:ab = wait["setkey"] + ' '
-        a ="   「 Helper 」\n" \
-        "1. "+ab+" Mentionz\n" \
-        "2. "+ab+" Broadcastz\n" \
-        "3. "+ab+" Lurkz\n" \
-        "4. "+ab+" Autoreadz\n" \
-        "5. "+ab+" Groupz\n" \
-        "6. "+ab+" Friendz\n" \
-        "7. "+ab+" Disguisez\n" \
-        "8. "+ab+" Spamz\n" \
-        "9. "+ab+" Stealz\n" \
+        a ="     「 Helper 」\n" \
+        "1. "+ab+"  Mentionz\n" \
+        "2. "+ab+"  Broadcastz\n" \
+        "3. "+ab+"  Lurkz\n" \
+        "4. "+ab+"  Autoreadz\n" \
+        "5. "+ab+"  Groupz\n" \
+        "6. "+ab+"  Friendz\n" \
+        "7. "+ab+"  Disguisez\n" \
+        "8. "+ab+"  Spamz\n" \
+        "9. "+ab+"  Stealz\n" \
         "10. "+ab+" Autojoinz\n" \
         "11. "+ab+" Autoaddz\n" \
         "12. "+ab+" Announcez\n" \
@@ -3043,5 +3043,5 @@ class Talk(object):
                             wait['Unsend'][to]['B'].remove(b)
                         except:pass
                     t = len(wait['Unsend'][to]['B'])
-                    self.sendMessage(to,"sukses Mengurungkan {} pesan".format((n-t)))
+                    self.sendMessage(to,"Sukses Mengurungkan {} pesan".format((n-t)))
                 if len(msg.text.split(' ')) >= 3:h = [self.unsendMessage(self.sendMessage(to,self.adityasplittext(msg.text,'s')).id) for b in a]
