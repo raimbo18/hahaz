@@ -188,7 +188,7 @@ class Talk(object):
         except:
             wait['tos'][msg.to] = {'setset':False}
             if wait['tos'][msg.to]['setset'] == True:md+="\n- Unsend Detect: [On]"
-            else:md+="\n- Unsend Detect: DISABLED♪"
+            else:md+="\n- Unsend Detect: [Off]"
         if msg.to in wait["setTimess"]:md+="\n- ChangeDP Group: [On]"
         else:md+="\n- ChangeDP Group: [Off]"
         md+="\n\nGenerator:"
@@ -2345,7 +2345,7 @@ class Talk(object):
     def help(self,msg,wait):
         if wait["setkey"] == '':ab = ''
         else:ab = wait["setkey"] + ' '
-        a ="      「 Helper 」\n" \
+        a ="       「 Helper 」\n" \
         "1. "+ab+"Mentionz\n" \
         "2. "+ab+"Broadcastz\n" \
         "3. "+ab+"Lurkz\n" \
@@ -2361,6 +2361,7 @@ class Talk(object):
         "13. "+ab+"Profilez\n" \
         "14. "+ab+"Mediaz\n" \
         "15. "+ab+"Settz\n" \
+        +"ㄨLogout sbㄨ\n" \
         +"ㄨRestartㄨ\n" \
         +"ㄨPrefixㄨ\n\n"
         zxc = a.title()+"ㄔAuthor : Aditya N.\nㄔReworked by @!\n"
