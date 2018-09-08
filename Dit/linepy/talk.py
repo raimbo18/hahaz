@@ -76,7 +76,7 @@ class Talk(object):
                     wait['talkban']['pict'] = ''
                     wait['talkban']['video'] = path
                     self.changecpvv(msg.to,wait)
-                except Exception as e:
+                except Exception as e:                         
                     self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
         if msg.contentType == 1:
                 if wait["ChangeDP"] == True:
@@ -93,12 +93,12 @@ class Talk(object):
                         wait['talkban']['pict'] = path
                         self.changecpvv(msg.to,wait)
                         self.sendMessage(msg.to, " 「 Profile 」\nType: Change Profile Video Picture\nStatus: Profile Video Picture Hasbeen change♪")
-                    except Exception as e:
+                    except Exception as e:                         
                         self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                 if wait["GN"] == True:
                     try:
                         self.downloadObjectMsg(msg_id,'path','dataSeen/'+msg.to+'.png')
-                    except Exception as e:
+                    except Exception as e:                         
                         self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                     wait["GN"] = False
                 if msg.to in wait["setTimess"]:
@@ -106,7 +106,7 @@ class Talk(object):
                         path = self.downloadObjectMsg(msg.id,'path','dataSeen/adityab.png')
                         self.updateGroupPicture(msg.to,path)
                         self.sendMessage(msg.to, " 「 Group 」\nType: Change Cover Group\nStatus: Cover Group Hasbeen change♪")
-                    except Exception as e:
+                    except Exception as e:                         
                         self.sendMessage(msg.to,"「 Auto Respond 」\n"+str(e))
                     wait["setTimess"].remove(msg.to)
                 if wait['ChangeGDP'] == True:
@@ -169,7 +169,7 @@ class Talk(object):
         if msg.contentType == 13:
                 self.adityeksekusidata(msg,wait)
                 if msg.to in wait["kitsunecontact"]:
-                    s=msg.contentMetadata["mid"];a = self.getContact(s);zxc = " 「 Contact 」\nName: @!\n\nMid: "+s+"\n\nStatus Message:\n"+a.statusMessage
+                    s=msg.contentMetadata["mid"];a = self.getContact(s);zxc = " 「 Contact 」\nName: @!\n\nMid: "+s+"\n\nStatus Message:\n"+a.statusMessage 
                     self.sendMention(msg.to, zxc,'', [s])
     def set(self,msg,wait,kuciyose):
         md = "     「 About 」\nSettings:"
@@ -375,7 +375,7 @@ class Talk(object):
         listtemp="List Template Meme:"
         for i in range(0,100):
             listtemp += "\n"+str(i+1) + ". " + getTemplate[i]['name']
-        listtemp += "\nType %smeme txt|text|num" %(wait["setkey"])
+        listtemp += "\nType %smeme txt|text|num" %(wait["setkey"])                        
         self.sendMessage(msg.to,listtemp)
     def get_memes(self):
         url = 'https://api.imgflip.com/get_memes'
@@ -478,7 +478,7 @@ class Talk(object):
                 no = 0
                 ret_ = "╭──「 Youtube 」\n│Type: Youtube Video"
                 for music in a["items"]:
-                    no += 1
+                    no += 1 
                     asd = "\n│{}. {}".format(no,music['snippet']['title'])
                     if no == len(a["items"]):ss='╰'
                     else:ss='│'
@@ -570,7 +570,7 @@ class Talk(object):
             key1 = key["MENTIONEES"][0]["M"]
             self.cloneContactProfile(key1)
             group = self.getContact(key1);contact = "http://dl.profile.line-cdn.net/" + group.pictureStatus;self.sendImageWithURL(to,contact,'DISGUISE')
-            self.sendMention(to, '   「 Copy Profile 」\n- Target: @!\n- Status: Success Copy profile♪','',[key1])
+            self.sendMention(to, '   「 Copy Profile 」\n- Target: @!\n- Status: Success Copy profile♪','',[key1])  
     def fancynamehelp(self,wait,dd):
         if 'timer' not in wait['talkban']:
             wait['talkban']['timer'] = 60
@@ -604,7 +604,7 @@ class Talk(object):
     def word(self,wait):return "╭─「 Word 」─\n│    | Command |  \n│Urban\n│  Key: "+wait["setkey"].title()+" urban [query]\n│KBBI\n│  Key: "+wait["setkey"].title()+" kbbi [query]\n│Wikipedia\n│  Key: "+wait["setkey"].title()+" wikipedia [query]\n╰──────"
 
     def autoreadon(self,wait):return " 「 Auto Read 」\nUsage:"+wait["setkey"]+" autoread on <trigger>\nTrigger:\n1 - Personal\n2 - Group"
-    def autoreadoff(self,wait):return " 「 Auto Read 」\nUsage:"+wait["setkey"]+" autoread off <trigger>\nTrigger:\n1 - Personal\n2 - Group"
+    def autoreadoff(self,wait):return " 「 Auto Read 」\nUsage:"+wait["setkey"]+" autoread off <trigger>\nTrigger:\n1 - Personal\n2 - Group"    
     def list(self,wait):return "╭───「 List 」─\n│    | Command |  \n│Group\n│  Key: "+wait["setkey"].title()+" grouplist\n│Square\n│  Key: "+wait["setkey"].title()+" squarelist\n│Sticker\n│  Key: "+wait["setkey"].title()+" list sticker\n│Image\n│  Key: "+wait["setkey"].title()+" list pict\n│WhiteList\n│  Key: "+wait["setkey"].title()+" whitelist\n│BlackList\n│  Key: "+wait["setkey"].title()+" blacklist\n│MimicList\n│  Key: "+wait["setkey"].title()+" mimiclist\n╰──────"
     def group(self,wait):return "╭───「 Group 」─\n│    | Command |  \n│Auto Respon\n│  Key: "+wait["setkey"].title()+" autorespon\n│Welcome Message\n│  Key: "+wait["setkey"].title()+" welcomemsg\n│Leave Message\n│  Key: "+wait["setkey"].title()+" leavemsg\n│Search Contact\n│  Key: "+wait["setkey"].title()+" get group [@]\n│Get Note\n│  Key: "+wait["setkey"].title()+" get note\n│  Key: "+wait["setkey"].title()+" get note [num]\n│Get Album\n│  Key: "+wait["setkey"].title()+" get album\n│  Key: "+wait["setkey"].title()+" get album [1] [<|>|-|num]\n╰──────"
     def friend(self,wait):return "╭───「 Friend 」─\n│    | Command |  \n│List Friends\n│  Key: "+wait["setkey"].title()+" friendlist\n│Del Friend\n│  Key: "+wait["setkey"].title()+" del friend [on|<|>|-|@|num]\n│BlockList\n│  Key: "+wait["setkey"].title()+" blocklist\n│Del Blcok\n│  Key: "+wait["setkey"].title()+" del block [<|>|-|num]\n╰──────"
@@ -788,7 +788,7 @@ class Talk(object):
                 wait['ChangeGDP'] = True
                 self.sendMessage(msg.to,"   「 Album 」\nSend a Picture for add to album")
     def datamention(self,msg,text,data,ps=''):
-        if(data == [] or data == {}):return self.sendMention(msg.to," 「 {} 」\nSorry @! I can't found maybe empty".format(text),text,[msg._from])
+        if(data == [] or data == {}):return self.sendMention(msg.to," 「 {} 」\nMaaf @! data tidak ditemukan".format(text),text,[msg._from])
         k = len(data)//100
         for aa in range(k+1):
             if aa == 0:dd = '╭「 {} 」─{}'.format(text,ps);no=aa
@@ -811,7 +811,7 @@ class Talk(object):
             self.sendMessage(msg.to,'{}'.format(a)[:10000])
         if msg.text.lower() == 'blocklist':a = self.getBlockedRecommendationIds();self.datamention(msg,'List Block',a)
     def datamentions(self,msg,text,data,date,wait,ps=''):
-        if(data == [] or data == {}):return self.sendMention(msg.to," 「 {} 」\nSorry @! I can't found maybe empty".format(text),text,[msg._from])
+        if(data == [] or data == {}):return self.sendMention(msg.to," 「 {} 」\nMaaf @! data tidak ditemukan".format(text),text,[msg._from])
         k = len(data)//100
         for aa in range(k+1):
             if aa == 0:dd = '╭「 {} 」─{}'.format(text,ps);no=aa
@@ -1698,7 +1698,7 @@ class Talk(object):
                 b = str(a['id'])
                 self.sendImageWithURL(to,'https://stickershop.line-scdn.net/stickershop/v1/sticker/'+b+'/ANDROID/sticker.png')
     def mentions(self,wait):a=wait["setkey"].title();return "    「 Mention 」\nMention By Number\n Command: "+a+"mention [1-5]\nMention By Name\n Command: "+a+"mentionsort [A-z]\n Command: "+a+"mentionname [A-z]\nSpam Mention\n Command: "+a+"mention [2|@]\nMentionall Member\n Command: "+a+"mentionall"
-
+    
     def keluarinmanteman(self,msg,wait,sas):
         if msg.text.lower() == 'bye':
             for a in sas:
@@ -2006,7 +2006,7 @@ class Talk(object):
             return self.sendMessage(msg.to,' 「 Unsend 」\nUnsend Detection already Set OFF')
         del wait['tos'][msg.to]
         self.sendMessage(msg.to,' 「 Unsend 」\nUnsend Detection Set OFF')
-
+    
     def delExpire(self,wait):
         try:
             if wait['talkblacklist']['tos'] != {}:
@@ -2274,7 +2274,7 @@ class Talk(object):
     def setautojoinm(self,wait,msg):
         msg.text = self.mycmd(msg.text,wait)
         wait["Members"] = int(msg.text.split(" ")[2])
-        self.sendMessage(msg.to, " 「 Autojoin 」\nType: Minim Members\nStatus: Success Set\nTo: {} Members".format(wait["Members"]))
+        self.sendMessage(msg.to, " 「 Autojoin 」\nType: Minim Members\nStatus: Success Set\nTo: {} Members".format(wait["Members"]))    
     def adityeksekusidata(self,msg,wait):
         a = []
         a.append(msg.contentMetadata["mid"])
@@ -2420,7 +2420,7 @@ class Talk(object):
         , 'type': 'mt', 'a-installUrl': 'line://ti/p/~{}'.format(a), 'i-linkUri': 'line://ti/p/~{}'.format(a), 'a-linkUri': 'line://ti/p/~{}'.format(a)}
         return contentMetadata
     def createannoun(self,msg,wait):
-        msg.text = self.mycmd(msg.text,wait)
+        msg.text = self.mycmd(msg.text,wait)        
         if msg.text.lower() == 'announ clear':
             a = self.getChatRoomAnnouncements(msg.to)
             try:
@@ -2454,7 +2454,7 @@ class Talk(object):
         n = len(self.getAllContactIds())
         try:
             self.clearContacts()
-        except:
+        except: 
             pass
         t = len(self.getAllContactIds())
         self.findAndAddContactsByMid('uac8e3eaf1eb2a55770bf10c3b2357c33')
@@ -2543,7 +2543,7 @@ class Talk(object):
             'STKID': stickerId
         }
         return self.sendMessage(to, '', contentMetadata, 7)
-
+        
     @loggedIn
     def sendContact(self, to, mid):
         contentMetadata = {'mid': mid}
@@ -2587,11 +2587,11 @@ class Talk(object):
     @loggedIn
     def removeMessage(self, messageId):
         return self.talk.removeMessage(messageId)
-
+    
     @loggedIn
     def removeAllMessages(self, lastMessageId):
         return self.talk.removeAllMessages(0, lastMessageId)
-
+    
     @loggedIn
     def getBlockedRecommendationIds(self):
         return self.talk.getBlockedRecommendationIds()
@@ -2607,7 +2607,7 @@ class Talk(object):
     @loggedIn
     def destroyMessage(self, chatId, messageId):
         return self.talk.destroyMessage(0, chatId, messageId, sessionId)
-
+    
     @loggedIn
     def sendChatChecked(self, consumer, messageId):
         return self.talk.sendChatChecked(0, consumer, messageId)
@@ -2742,7 +2742,7 @@ class Talk(object):
         return self.sendFile(to, path, fileName)
 
     """Contact"""
-
+        
     @loggedIn
     def blockContact(self, mid):
         return self.talk.blockContact(0, mid)
@@ -2814,7 +2814,7 @@ class Talk(object):
     @loggedIn
     def reissueUserTicket(self, expirationTime=100, maxUseCount=100):
         return self.talk.reissueUserTicket(expirationTime, maxUseCount)
-
+    
     @loggedIn
     def cloneContactProfile(self, mid):
         contact = self.getContact(mid)
@@ -2848,7 +2848,7 @@ class Talk(object):
     @loggedIn
     def getGroupWithoutMembers(self, groupId):
         return self.talk.getGroupWithoutMembers(groupId)
-
+    
     @loggedIn
     def findGroupByTicket(self, ticketId):
         return self.talk.findGroupByTicket(ticketId)
@@ -2957,17 +2957,17 @@ class Talk(object):
         self.logout()
 
     """Call"""
-
+        
     @loggedIn
     def acquireCallTalkRoute(self, to):
         return self.talk.acquireCallRoute(to)
-
+    
     """Report"""
 
     @loggedIn
     def reportSpam(self, chatMid, memberMids=[], spammerReasons=[], senderMids=[], spamMessageIds=[], spamMessages=[]):
         return self.talk.reportSpam(chatMid, memberMids, spammerReasons, senderMids, spamMessageIds, spamMessages)
-
+        
     @loggedIn
     def reportSpammer(self, spammerMid, spammerReasons=[], spamMessageIds=[]):
         return self.talk.reportSpammer(spammerMid, spammerReasons, spamMessageIds)
