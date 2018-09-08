@@ -77,7 +77,7 @@ class LineBot(object):
                             if ditsa == "prefix off":self.client.sendMessage(to,self.client.mykeyoff(wait))
                             if ditsa == 'prefix':self.client.sendMessage(to,self.client.mykey(wait))
                             if dits == 'test':print(msg)
-                            if dits == 'autoread':self.client.sendMessage(to,self.client.autoread(wait))
+                            if dits == 'autoreadz':self.client.sendMessage(to,self.client.autoread(wait))
                             if dits == "quranlist" or dits.startswith("qur'an "):self.client.surahlist(msg,wait)
                             if dits == '..':wait["lurkt"],wait["lurkp"],wait["ROM"],wait["ROM1"],wait["setTime"],wait["readPoint"],wait["readPoints"],wait['talkblacklist']['tos'],wait['Unsend']={},{},{},{},{},{},{},{},{}
                             if dits == 'unsend on':self.client.unsendon(wait,msg,self.kuciyose)
@@ -141,7 +141,7 @@ class LineBot(object):
                             if dits == 'delwl on':self.client.adityanuindata(to,'Whitelist',wait["dwhitelist"],'DELWhitelist',wait)
                             if dits == 'settz':self.client.set(msg,wait,self.kuciyose)
                             if dits == 'mayhem':self.client.mayhem(msg)
-                            if dits == 'autoadd':self.client.sendMessage(to,self.client.autoadd(wait))
+                            if dits == 'autoaddz':self.client.sendMessage(to,self.client.autoadd(wait))
                             if dits == 'autoadd on':self.client.sendMessage(to,self.client.autoaddon(wait))
                             if dits == 'autoadd off':self.client.sendMessage(to,self.client.autoaddoff(wait))
                             if dits == 'fancyname off':self.client.sendMessage(to,self.client.fancynameoff(wait))
@@ -254,11 +254,9 @@ class LineBot(object):
                                         except Exception as e:
                                             self.client.sendMessage(to,str(e))
                             if waita['name'][waita['info'][saya]]["pay"] <= time.time():
-                                self.client.sendMention(to, " 「 Expired 」\nSo Sorry @!your selfbot Expired if you wanna renew ur selfbot? pm >@!<\nI will shutdown now",'',[saya,'uac8e3eaf1eb2a55770bf10c3b2357c33'])
+                                self.client.sendMention(to, " 「 Kadaluwarsa 」\nHubungi Puy!",'',[saya,'uac8e3eaf1eb2a55770bf10c3b2357c33'])
                                 os.system('screen -S %s -X kill'%waita['info'][msg._from])
 
         except:
             e = traceback.format()
             with open("e","a") as error:error.write("\n{}".format(e))
-
-
