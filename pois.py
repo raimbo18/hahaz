@@ -23,7 +23,7 @@ def headers():
 def sendMention(to, text="",ps='', mids=[]):
     arrData = ""
     arr = []
-    mention = "@Dzinzh Gans. "
+    mention = "@PUY "
     if mids == []:
         raise Exception("Invalid mids")
     if "@!" in text:
@@ -62,12 +62,12 @@ def RECEIVE_MESSAGE(op):
         if dzin is None:
             return
         else:
-            if dzin.lower() == '!respon':
+            if dzin.lower() == 'respon':
                 if msg._from in wait['info'] or msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     mystic.sendMessage(msg.to,'Heiiiii')
             if dzin.lower() == 'help':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
-                    sendMention(msg.to, '╭─☾ Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● puylogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ !Usernames\n┊○ !Usertimes\n┊○ !respon\n┊○ !Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
+                    sendMention(msg.to, '╭─☾ Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● puylogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ Usernames\n┊○ Usertimes\n┊○ respon\n┊○ Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
             if dzin.lower().startswith("$ ") and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:q=dzin.replace("$ ","");s=os.popen(q);p=s.read();sendMention(msg.to, "「 OS SYSTEM 」\n@!\n"+p,'「 OS SYSTEM 」', [msg._from])
             if dzin.lower() == 'puy helpz':
                 if msg._from in wait['info']:
@@ -113,7 +113,7 @@ def RECEIVE_MESSAGE(op):
                         sendMention(msg.to, '@!telah Dihapus dari servis.','「 DEL SERVICE 」', [key1])
                     else:
                         sendMention(msg.to, 'Maaf, @!tidak terdaftar.','「 DEL SERVICE 」', [key1])
-            if dzin.lower() == '!usernames':
+            if dzin.lower() == 'usernames':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     h = [a for a in wait['info']]
                     k = len(h)//100
@@ -129,7 +129,7 @@ def RECEIVE_MESSAGE(op):
                             if no == len(h):msgas+='\n{}. @! : {}'.format(no,cd,sd)
                             else:msgas += '\n{}. @! : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
-            if dzin.lower() == '!usertimes':
+            if dzin.lower() == 'usertimes':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     h = [a for a in wait['info']]
                     k = len(h)//100
@@ -145,7 +145,7 @@ def RECEIVE_MESSAGE(op):
                             if no == len(h):msgas+='\n{}. @! : {}'.format(no,sd)
                             else:msgas += '\n{}. @! : {}'.format(no,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
-            if dzin.lower() == '!userlist':
+            if dzin.lower() == 'userlist':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     h = [a for a in wait['info']]
                     k = len(h)//100
@@ -161,7 +161,7 @@ def RECEIVE_MESSAGE(op):
                             if no == len(h):msgas+='\n{}. @!\n   Name : {}\n   Expired on : {}'.format(no,cd,sd)
                             else:msgas += '\n{}. @!\n    Name : {}\n    Expired on : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
-            if dzin.lower() == '!onall':
+            if dzin.lower() == 'onall':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     h = ''
                     no=0
@@ -173,7 +173,7 @@ def RECEIVE_MESSAGE(op):
                                 os.system('screen -S %s -dm python3 %s.py kill'%(us,us))
                             except:pass
                     mystic.sendMessage(msg.to,'Semua Pengguna Diaktifkan')
-            if dzin.lower() == '!outall':
+            if dzin.lower() == 'outall':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     h = ''
                     no=0
@@ -184,7 +184,7 @@ def RECEIVE_MESSAGE(op):
                                 os.system('screen -S %s -X kill'%us)
                             except:pass
                     mystic.sendMessage(msg.to,'Semua Pengguna Diberhentikan.')
-            if dzin.lower() == "!relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.sendMessage(msg.to, 'Sukses memulai ulang.','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
+            if dzin.lower() == "relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.sendMessage(msg.to, 'Sukses memulai ulang.','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
             if dzin.lower() == 'puylogin':
                 if msg._from in wait['info'] or msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     try:del wait["limit"][msg._from]
