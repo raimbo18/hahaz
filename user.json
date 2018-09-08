@@ -3,7 +3,7 @@
         "u1916721a836d0e456c291abb7ed4a499": "haha",
         "u5a31c87ded167546e010a1b7edd36c72": "iyanku",
         "u6b7dbf1e4a04a017d2c288849f92b6d7": "enjubku",
-        "uac8e3eaf1eb2a55770bf10c3b2357c33": "pui"
+        #"uac8e3eaf1eb2a55770bf10c3b2357c33": "pui"
     },
     "limit": {},
     "name": {
@@ -27,14 +27,6 @@
             "runtime": 1535583749.1286178,
             "token": {},
             "user": "iyanku"
-        },
-        "pui": {
-            "mid": "uac8e3eaf1eb2a55770bf10c3b2357c33",
-            "pay": 1537926832.2736702,
-            "runtime": 1535334832.2736702,
-            "tempat": "c2a1429b8040c6c639101f2a37cff5ba8",
-            "token": "EwsG7b9d1DD7qNEajHT3.Ri4/RX6YPvDWVXddSJv8mW.plSQ/XWDaBcMTQXXUtzYz2klNXaYEMhlP9oMtE0bMwo=",
-            "user": "pui"
         }
     }
 }
