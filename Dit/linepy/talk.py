@@ -587,7 +587,7 @@ class Talk(object):
             a = ""
             for b in wait["timeline"]:
                 a+= '\n│'+b
-        return "┌───「 Fancy Name 」───────\n│Backup Name: ""PUY""\n│FancyName Set:"+a+d+"\n│    | Command |  \n│Set Name\n│  Key: "+wait["setkey"].title()+" fancyname set [enter|name]\n│Set Time\n│  Key: "+wait["setkey"].title()+" fancyname on [time]\n└────────────"
+        return "┌───「 Fancy Name 」───────\n│Backup Name: "+dd+"\n│FancyName Set:"+a+d+"\n│    | Command |  \n│Set Name\n│  Key: "+wait["setkey"].title()+" fancyname set [enter|name]\n│Set Time\n│  Key: "+wait["setkey"].title()+" fancyname on [time]\n└────────────"
     def lagulagu(self,wait):return "╭───「 Music 」─\n│    | Command |  \n│Search Music\n│  Key: "+wait["setkey"].title()+" soundcloud [query]\n│Detail Music\n│  Key: "+wait["setkey"].title()+" soundcloud [query|num]\n│Lyric\n│  Key: "+wait["setkey"].title()+" lyric [judul]\n╰──────"
     def copy(self,wait):return "╭───「 Disguise 」─\n│    | Command |  \n│Disguise ON\n│  Key: "+wait["setkey"].title()+" disguise on [@]\n│Disguise OFF\n│  Key: "+wait["setkey"].title()+" disguise off\n│Disguise Setdefault\n│  Key: "+wait["setkey"].title()+" disguise setdefault\n╰──────"
     def steal(self,wait):return "╭───「 Steal 」─\n│    | Command |  \n│Get Profile Picture\n│  Key: "+wait["setkey"].title()+" steal pp [@]\n│Get Cover Picture\n│  Key: "+wait["setkey"].title()+" steal cover [@]\n│Get ID\n│  Key: "+wait["setkey"].title()+" getid, getid [@|num]\n╰──────"
