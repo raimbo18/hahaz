@@ -15,7 +15,7 @@ poll = LinePoll(mystic)
 def headers():
     Headers = {
     'User-Agent': "Line/8.3.2",
-    'X-Line-Application': "DESKTOPMAC\t5.5.1\tdzin\tTools\10.13.2",
+    'X-Line-Application': "CHROMEOS\t2.5.1\tPUY\tTools\10.13.2",
     "x-lal": "ja-US_US",
     }
     return Headers
@@ -72,7 +72,7 @@ def RECEIVE_MESSAGE(op):
             if dzin.lower() == 'puy helpz':
                 if msg._from in wait['info']:
                     if msg._from not in ["uac8e3eaf1eb2a55770bf10c3b2357c33","ub4974c6489c969402713a974b568ee9e","uaca55463c423c3632012598148691da7"]:
-                        sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│1.) !dzinlogin\nContact me at @!','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
+                        sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│1.) !puylogin\nContact me at @!','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
             if dzin.lower().startswith('addme ') or dzin.lower() == 'addme':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     if msg._from not in wait['info']:
@@ -211,7 +211,7 @@ def RECEIVE_MESSAGE(op):
                                     transport.setCustomHeaders(a)
                                     protocol = TCompactProtocol.TCompactProtocol(transport)
                                     client = LineService.Client(protocol)
-                                    qr = client.getAuthQrcode(keepLoggedIn=1, systemName='dzin')
+                                    qr = client.getAuthQrcode(keepLoggedIn=1, systemName='PUY')
                                     link = "line://au/q/" + qr.verifier
                                     if msg.toType == 2:sendMention(msg.to, '@!Cek PM','「 SB 」', [msg._from])
                                     else:pass
