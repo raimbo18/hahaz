@@ -15,7 +15,7 @@ poll = LinePoll(mystic)
 def headers():
     Headers = {
     'User-Agent': "Line/8.3.2",
-    'X-Line-Application': "DESKTOPMAC\t5.5.1\tPUY\tTools\10.13.2",
+    'X-Line-Application': "DESKTOPMAC\t5.5.1\tdzin\tTools\10.13.2",
     "x-lal": "ja-US_US",
     }
     return Headers
@@ -23,7 +23,7 @@ def headers():
 def sendMention(to, text="",ps='', mids=[]):
     arrData = ""
     arr = []
-    mention = "@PUY "
+    mention = "@Dzinzh Gans. "
     if mids == []:
         raise Exception("Invalid mids")
     if "@!" in text:
@@ -57,48 +57,48 @@ def waktu(secs):
 def RECEIVE_MESSAGE(op):
     msg = op.message
     text1 = msg.text
-    puy = text1
+    dzin = text1
     if msg.contentType == 0:
-        if puy is None:
+        if dzin is None:
             return
         else:
-            if puy.lower() == 'respon':
+            if dzin.lower() == 'respon':
                 if msg._from in wait['info'] or msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     mystic.sendMessage(msg.to,'Heiiiii')
-            if puy.lower() == 'help':
+            if dzin.lower() == 'help':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
-                    sendMention(msg.to, '╭─☾ Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● puylogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ Usernames\n┊○ Usertimes\n┊○ respon\n┊○ Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
-            if puy.lower().startswith("$ ") and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:q=puy.replace("$ ","");s=os.popen(q);p=s.read();sendMention(msg.to, "「 OS SYSTEM 」\n@!\n"+p,'「 OS SYSTEM 」', [msg._from])
-            if puy.lower() == 'puy helpz':
+                    sendMention(msg.to, '╭─☾ Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● dzinlogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ Usernames\n┊○ Usertimes\n┊○ respon\n┊○ Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
+            if dzin.lower().startswith("$ ") and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:q=dzin.replace("$ ","");s=os.popen(q);p=s.read();sendMention(msg.to, "「 OS SYSTEM 」\n@!\n"+p,'「 OS SYSTEM 」', [msg._from])
+            if dzin.lower() == 'dzin helpz':
                 if msg._from in wait['info']:
                     if msg._from not in ["uac8e3eaf1eb2a55770bf10c3b2357c33","ub4974c6489c969402713a974b568ee9e","uaca55463c423c3632012598148691da7"]:
-                        sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│1.) !puylogin\nContact me at @!','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
-            if puy.lower().startswith('addme ') or puy.lower() == 'addme':
+                        sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│1.) !dzinlogin\nContact me at @!','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
+            if dzin.lower().startswith('addme ') or dzin.lower() == 'addme':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     if msg._from not in wait['info']:
                         pay = time.time()
-                        nama = str(puy.split(' ')[1])
+                        nama = str(dzin.split(' ')[1])
                         wait['name'][nama] =  {"user":nama,"mid":msg._from,"pay":pay+60*60*24*350,"runtime":pay,"token":{}}
                         wait['info'][msg._from] =  '%s' % nama
                         sendMention(msg.to, ' @!berhasil terdaftar.','「 ADD SERVICE 」', [msg._from])
                     else:
-                        if puy.lower() == 'addme':
+                        if dzin.lower() == 'addme':
                             wait['name'][wait['info'][msg._from]]['pay'] = wait['name'][wait['info'][msg._from]]['pay']+60*60*24*350;time.sleep(4)
                             os.system('screen -S %s -X kill'%wait['info'][msg._from])
                             os.system('screen -S %s -dm python3 %s.py kill'%(wait['info'][msg._from],wait['info'][msg._from]))
                             sendMention(msg.to, 'Got Invalid!\n@!to service selfbot, because @! xpired in service selfbot now {}'.format(humanize.naturaltime(datetime.fromtimestamp(wait['name'][wait['info'][msg._from]]["pay"]))),'「 ADD SERVICE 」', [msg._from])
-            if puy.lower().startswith('+user ') and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+            if dzin.lower().startswith('+user ') and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                 if 'MENTION' in msg.contentMetadata.keys()!= None:
                     key = eval(msg.contentMetadata["MENTION"])
                     key1 = key["MENTIONEES"][0]["M"]
                     if key1 not in wait['info']:
                         pay = time.time()
-                        nama = str(puy.split(' ')[1])
+                        nama = str(dzin.split(' ')[1])
                         wait['name'][nama] =  {"user":nama,"mid":key1,"pay":pay+60*60*24*120,"runtime":pay,"token":{}}
                         wait['info'][key1] =  '%s' % nama
                         sendMention(msg.to, '@!telah Ditambahkan.','「 ADD SERVICE 」', [key1])
                     else:mystic.sendMessage(msg.to, 'Gagal!','「 ADD SERVICE 」', [key1])
-            if puy.lower().startswith('-user ') and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
+            if dzin.lower().startswith('-user ') and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                 if 'MENTION' in msg.contentMetadata.keys()!= None:
                     key = eval(msg.contentMetadata["MENTION"])
                     key1 = key["MENTIONEES"][0]["M"]
@@ -113,7 +113,7 @@ def RECEIVE_MESSAGE(op):
                         sendMention(msg.to, '@!telah Dihapus dari servis.','「 DEL SERVICE 」', [key1])
                     else:
                         sendMention(msg.to, 'Maaf, @!tidak terdaftar.','「 DEL SERVICE 」', [key1])
-            if puy.lower() == 'usernames':
+            if dzin.lower() == 'usernames':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     h = [a for a in wait['info']]
                     k = len(h)//100
@@ -129,7 +129,7 @@ def RECEIVE_MESSAGE(op):
                             if no == len(h):msgas+='\n{}. @! : {}'.format(no,cd,sd)
                             else:msgas += '\n{}. @! : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
-            if puy.lower() == 'usertimes':
+            if dzin.lower() == 'usertimes':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     h = [a for a in wait['info']]
                     k = len(h)//100
@@ -145,7 +145,7 @@ def RECEIVE_MESSAGE(op):
                             if no == len(h):msgas+='\n{}. @! : {}'.format(no,sd)
                             else:msgas += '\n{}. @! : {}'.format(no,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
-            if puy.lower() == 'userlist':
+            if dzin.lower() == 'userlist':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     h = [a for a in wait['info']]
                     k = len(h)//100
@@ -161,7 +161,7 @@ def RECEIVE_MESSAGE(op):
                             if no == len(h):msgas+='\n{}. @!\n   Name : {}\n   Expired on : {}'.format(no,cd,sd)
                             else:msgas += '\n{}. @!\n    Name : {}\n    Expired on : {}'.format(no,cd,sd)
                         sendMention(msg.to, msgas,'   「 User Sb List 」', h)
-            if puy.lower() == 'onall':
+            if dzin.lower() == 'onall':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     h = ''
                     no=0
@@ -173,7 +173,7 @@ def RECEIVE_MESSAGE(op):
                                 os.system('screen -S %s -dm python3 %s.py kill'%(us,us))
                             except:pass
                     mystic.sendMessage(msg.to,'Semua Pengguna Diaktifkan')
-            if puy.lower() == 'outall':
+            if dzin.lower() == 'outall':
                 if msg._from in ['uac8e3eaf1eb2a55770bf10c3b2357c33']:
                     h = ''
                     no=0
@@ -184,8 +184,8 @@ def RECEIVE_MESSAGE(op):
                                 os.system('screen -S %s -X kill'%us)
                             except:pass
                     mystic.sendMessage(msg.to,'Semua Pengguna Diberhentikan.')
-            if puy.lower() == "relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.sendMessage(msg.to, 'Sukses memulai ulang.','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
-            if puy.lower() == 'puylogin':
+            if dzin.lower() == "relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.sendMessage(msg.to, 'Sukses memulai ulang.','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
+            if dzin.lower() == 'dzinlogin':
                 if msg._from in wait['info'] or msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     try:del wait["limit"][msg._from]
                     except:pass
@@ -211,7 +211,7 @@ def RECEIVE_MESSAGE(op):
                                     transport.setCustomHeaders(a)
                                     protocol = TCompactProtocol.TCompactProtocol(transport)
                                     client = LineService.Client(protocol)
-                                    qr = client.getAuthQrcode(keepLoggedIn=1, systemName='PUY')
+                                    qr = client.getAuthQrcode(keepLoggedIn=1, systemName='dzin')
                                     link = "line://au/q/" + qr.verifier
                                     if msg.toType == 2:sendMention(msg.to, '@!Cek PM','「 SB 」', [msg._from])
                                     else:pass
