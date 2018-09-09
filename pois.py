@@ -15,7 +15,7 @@ poll = LinePoll(mystic)
 def headers():
     Headers = {
     'User-Agent': "Line/8.3.2",
-    'X-Line-Application': "CHROMEOS\t2.5.1\tPUY\tTools\10.13.2",
+    'X-Line-Application': "CHROMEOS\t2.5.1\tDzin\tTools\10.13.2",
     "x-lal": "ja-US_US",
     }
     return Headers
